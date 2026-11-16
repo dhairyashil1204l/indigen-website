@@ -1,226 +1,188 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { supabase } from "@/lib/supabase";
 
 
-export async function POST(req: Request) {
+export async function POST(req:Request){
 
-  try {
+try{
 
-    const {
 
-      name,
-      company,
-      email,
-      phone,
-      services,
-      timeline,
-      message
+const {
+name,
+company,
+email,
+phone,
+services,
+timeline,
+message
 
-    } = await req.json();
+}=await req.json();
 
 
 
-    console.log("SMTP DETAILS", {
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS ? "FOUND" : "MISSING"
-    });
+// SAVE TO DATABASE
 
+const {error}=await supabase
+.from("contacts")
+.insert([
 
+{
+name,
+company,
+email,
+phone,
+services: services?.join(", "),
+timeline,
+message
+}
 
-    const transporter = nodemailer.createTransport({
+]);
 
-      host: process.env.SMTP_HOST,
 
-      port: 587,
 
-      secure: false,
+if(error){
 
-      auth: {
+console.log(
+"SUPABASE ERROR:",
+error
+);
 
-        user: process.env.SMTP_USER,
+throw error;
 
-        pass: process.env.SMTP_PASS,
+}
 
-      },
 
-      tls: {
 
-        rejectUnauthorized:false
 
-      }
+// SEND EMAIL
 
-    });
 
+const transporter = nodemailer.createTransport({
 
+host:process.env.SMTP_HOST,
 
+port:587,
 
+secure:false,
 
-    await transporter.sendMail({
 
+auth:{
 
-      from: `"Indigen Website" <${process.env.SMTP_USER}>`,
+user:process.env.SMTP_USER,
 
+pass:process.env.SMTP_PASS
 
-      to: process.env.CONTACT_EMAIL,
+},
 
 
-      replyTo: email,
+tls:{
+rejectUnauthorized:false
+}
 
 
-      subject: "New Website Inquiry - Indigen Technologies",
+});
 
 
 
-      html: `
 
 
-      <div style="font-family:Arial,sans-serif">
+await transporter.sendMail({
 
+from:
+`"Indigen Website" <${process.env.SMTP_USER}>`,
 
-      <h2>
-      New Contact Form Submission
-      </h2>
 
+to:
+process.env.CONTACT_EMAIL,
 
-      <hr/>
 
+replyTo:
+email,
 
-      <p>
-      <b>Name:</b> ${name}
-      </p>
 
+subject:
+"New Website Inquiry - Indigen Technologies",
 
-      <p>
-      <b>Company:</b> ${company}
-      </p>
 
+html:`
 
+<h2>New Inquiry</h2>
 
-      <p>
-      <b>Email:</b> ${email}
-      </p>
+<p>
+<b>Name:</b> ${name}
+</p>
 
 
+<p>
+<b>Company:</b> ${company}
+</p>
 
-      <p>
-      <b>Phone:</b> ${phone}
-      </p>
 
+<p>
+<b>Email:</b> ${email}
+</p>
 
 
+<p>
+<b>Phone:</b> ${phone}
+</p>
 
-      <h3>
-      Interested Services
-      </h3>
 
+<p>
+<b>Services:</b> ${services?.join(", ")}
+</p>
 
-      <p>
-      ${
-        services && services.length > 0
-        ?
-        services.join(", ")
-        :
-        "Not Selected"
-      }
-      </p>
 
+<p>
+<b>Timeline:</b> ${timeline}
+</p>
 
 
+<p>
+<b>Message:</b> ${message}
+</p>
 
+`
 
-      <h3>
-      Project Timeline
-      </h3>
+});
 
 
-      <p>
-      ${
-        timeline
-        ?
-        timeline
-        :
-        "Not Selected"
-      }
-      </p>
 
 
+return NextResponse.json({
 
+success:true,
+message:"Submitted Successfully"
 
+});
 
-      <h3>
-      Project Requirement
-      </h3>
 
 
-      <p>
-      ${message}
-      </p>
+}
+catch(error:any){
 
 
+console.log(
+"CONTACT ERROR:",
+error.message
+);
 
 
-      <hr/>
 
+return NextResponse.json({
 
-      <p>
-      Sent from Indigen Technologies Website
-      </p>
+success:false,
 
+message:error.message
 
-      </div>
+},
+{
+status:500
+});
 
 
-      `
-
-
-    });
-
-
-
-
-
-    return NextResponse.json({
-
-      success:true
-
-    });
-
-
-
-  }
-
-  catch(error){
-
-
-    console.log(
-      "MAIL ERROR:",
-      error
-    );
-
-
-
-    return NextResponse.json(
-
-      {
-
-        success:false,
-
-        message:String(error)
-
-      },
-
-      {
-
-        status:500
-
-      }
-
-    );
-
-
-  }
+}
 
 
 }

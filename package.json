@@ -10,9 +10,11 @@
   "dependencies": {
     "@google/genai": "^2.31.0",
     "@google/generative-ai": "^0.24.1",
+    "@supabase/supabase-js": "^2.119.0",
     "dotenv": "^18.0.9",
     "framer-motion": "^11.0.0",
     "lucide-react": "^0.400.0",
+    "mongoose": "^9.12.1",
     "next": "^14.2.0",
     "nodemailer": "^10.3.1",
     "react": "^18.3.0",

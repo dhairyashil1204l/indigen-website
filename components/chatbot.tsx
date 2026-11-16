@@ -17,7 +17,7 @@ export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      text: "👋 Welcome to Indigen Technologies.\n\nHow can I help you today?",
+      text: " Welcome to Indigen Technologies.\n\nHow can I help you today?",
     },
   ]);
 
@@ -85,16 +85,16 @@ export default function Chatbot() {
         h-16
         w-16
         rounded-full
-        bg-blue-600
+        bg-red-600
         text-white
         text-2xl
         shadow-xl
-        hover:bg-blue-700
+        hover:bg-red-700
         transition
         z-50
         "
       >
-        💬
+        🤖
       </button>
 
       {/* Chat Window */}
@@ -121,7 +121,7 @@ export default function Chatbot() {
 
           <div
             className="
-            bg-blue-600
+            bg-red-600
             text-white
             p-4
             font-semibold
@@ -146,7 +146,7 @@ export default function Chatbot() {
                 key={index}
                 className={`max-w-[85%] rounded-xl px-4 py-3 text-sm whitespace-pre-wrap ${
                   msg.role === "user"
-                    ? "ml-auto bg-blue-600 text-white"
+                    ? "ml-auto bg-red-600 text-white"
                     : "bg-white border"
                 }`}
               >
@@ -195,9 +195,9 @@ export default function Chatbot() {
               className="
               px-5
               rounded-xl
-              bg-blue-600
+              bg-red-600
               text-white
-              hover:bg-blue-700
+              hover:bg-red-700
               "
             >
               Send

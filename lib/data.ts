@@ -188,24 +188,20 @@ export const HERO_DATA= {
 };
 
 export const ABOUT_DATA = {
-  title: "About Indigen Technologies",
+  title: "ABOUT INDIGEN",
 
   description:
-    "Incepted in the year 2003 at Pune (Maharashtra, India), Indigen Technologies is an established software company providing software products, software design and development services for industrial automation, manufacturing, medical equipment and engineering applications.",
-
+    "Founded in 2003, Indigen Technologies is a trusted software engineering company specializing in industrial automation, enterprise software, AI-driven solutions, and digital transformation. With over two decades of experience, we develop customized software products that help organizations improve productivity, automate complex processes, and accelerate innovation across multiple industries.",
 
   subDescription:
     "With more than two decades of experience, Indigen Technologies delivers reliable software solutions for industrial automation, engineering applications, manufacturing systems, medical equipment and enterprise platforms.",
 
 
   mission:
-    "To provide innovative, reliable and scalable software solutions that help industries improve productivity, automation and operational efficiency.",
-
+    "To provide valuable, innovative, and cost-effective software solutions to industries across the globe while delivering exceptional quality and long-term customer value.",
 
   vision:
-    "To become a globally trusted technology partner delivering advanced engineering software solutions and digital transformation for modern industries.",
-
-
+    "To be a premier software product company focused on delivering customized solutions that meet every customer's unique business requirements.",
   stats: [
     {
       value: "20+",
