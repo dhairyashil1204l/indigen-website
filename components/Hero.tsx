@@ -287,21 +287,7 @@ Explore Services
 
 
 
-<div
-className="
-absolute
--bottom-16
-left-0
-h-80
-w-full
-bg-gradient-to-b
-from-transparent
 
-via-[#091f5c]/70
-to-[#050b1c]
-z-10
-"
-/>
 
 
 
