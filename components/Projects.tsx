@@ -4,182 +4,346 @@ import { motion } from "framer-motion";
 import { PROJECTS } from "@/lib/data";
 
 
-export default function Products() {
+export default function Projects() {
 
-  return (
 
-    <section
-      id="projects"
-      className="bg-slate-50 py-24"
-    >
+return (
 
-      <div className="container-x">
+<section
 
+id="projects"
 
-        {/* Heading */}
+className="
+bg-[#E8F2FE]
+py-24
+dark:bg-[#050B1C]
+"
 
-        <div className="text-center">
+>
 
-          <h2
-            className="
-            text-4xl
-            font-extrabold
-            text-slate-900
-            lg:text-5xl
-            "
-          >
-            Our Projects
-          </h2>
 
+<div className="container-x">
 
-          <p
-            className="
-            mt-4
-            text-lg
-            text-slate-600
-            "
-          >
-            Innovative software products developed for industrial automation,
-            engineering and business applications.
-          </p>
 
 
-        </div>
 
 
+{/* Heading */}
 
 
+<div className="text-center">
 
-        {/* Products Grid */}
 
+<p className="
+mb-3
+font-semibold
+text-[#334DAF]
+">
 
-        <div
-          className="
-          mt-12
-          grid
-          gap-6
-          sm:grid-cols-2
-          lg:grid-cols-3
-          "
-        >
+Portfolio
 
+</p>
 
-          {
-            PROJECTS.map((projects,index)=>(
 
 
-              <motion.div
+<h2
 
-                key={projects.title}
+className="
+text-4xl
+font-extrabold
+text-[#091F5C]
+lg:text-5xl
+dark:text-white
+"
 
+>
 
-                initial={{
-                  opacity:0,
-                  y:30
-                }}
+Our Projects
 
+</h2>
 
-                whileInView={{
-                  opacity:1,
-                  y:0
-                }}
 
 
-                viewport={{
-                  once:true
-                }}
+<p
 
+className="
+mt-4
+text-lg
+text-slate-600
+dark:text-slate-300
+"
 
-                transition={{
-                  duration:0.5,
-                  delay:index*0.05
-                }}
+>
 
+Innovative software products developed for industrial automation,
+engineering and business applications.
 
-                className="
-                rounded-3xl
-                border
-                border-slate-200
-                bg-white
-                p-7
-                shadow-sm
-                transition
-                hover:-translate-y-1
-                hover:shadow-xl
-                "
+</p>
 
-              >
 
 
+</div>
 
-                {/* Number */}
 
 
 
 
 
 
-                <h3
-                  className="
-                  mt-6
-                  text-xl
-                  font-bold
-                  text-slate-900
-                  "
-                >
-                  {projects.title}
-                </h3>
 
 
+{/* Projects Grid */}
 
 
-                <p
-                  className="
-                  mt-3
-                  leading-7
-                  text-slate-600
-                  "
-                >
-                  {projects.description}
-                </p>
+<div
 
+className="
+mt-12
+grid
+gap-8
+sm:grid-cols-2
+lg:grid-cols-3
+"
 
+>
 
 
 
-                <button
-                  className="
-                  mt-6
-                  rounded-xl
-                  bg-red-600
-                  px-5
-                  py-2.5
-                  text-sm
-                  font-medium
-                  text-white
-                  hover:bg-red-700
-                  "
-                >
-                  View Details
-                </button>
+{PROJECTS.map((project,index)=>(
 
 
 
+<motion.div
 
-              </motion.div>
 
+key={project.title}
 
-            ))
-          }
 
 
-        </div>
+initial={{
 
+opacity:0,
 
-      </div>
+y:30
 
+}}
 
-    </section>
 
-  );
+
+whileInView={{
+
+opacity:1,
+
+y:0
+
+}}
+
+
+
+viewport={{
+
+once:true
+
+}}
+
+
+
+transition={{
+
+duration:0.5,
+
+delay:index*0.05
+
+}}
+
+
+
+
+className="
+
+group
+
+rounded-3xl
+
+border
+
+border-[#D0E4FE]
+
+bg-white
+
+p-7
+
+shadow-card
+
+transition-all
+
+duration-300
+
+hover:-translate-y-2
+
+dark:border-[#334DAF]
+
+dark:bg-[#091F5C]
+
+"
+
+
+
+>
+
+
+
+
+
+{/* Number */}
+
+
+<div
+
+className="
+flex
+h-12
+w-12
+items-center
+justify-center
+rounded-xl
+bg-[#334DAF]
+font-bold
+text-white
+transition
+group-hover:bg-[#091F5C]
+"
+
+>
+
+{String(index+1).padStart(2,"0")}
+
+
+</div>
+
+
+
+
+
+
+
+<h3
+
+className="
+mt-6
+text-xl
+font-bold
+text-[#091F5C]
+dark:text-white
+"
+
+>
+
+{project.title}
+
+</h3>
+
+
+
+
+
+
+<p
+
+className="
+mt-3
+leading-7
+text-slate-600
+dark:text-slate-300
+"
+
+>
+
+{project.description}
+
+</p>
+
+
+
+
+
+
+<button
+
+className="
+
+mt-6
+
+rounded-xl
+
+bg-[#334DAF]
+
+px-5
+
+py-3
+
+text-sm
+
+font-semibold
+
+text-white
+
+transition
+
+hover:bg-[#091F5C]
+
+"
+
+>
+
+View Details
+
+</button>
+
+
+
+
+
+
+{/* Accent line */}
+
+
+<div
+
+className="
+mt-6
+h-1
+w-10
+rounded-full
+bg-[#7096D1]
+transition-all
+group-hover:w-20
+"
+
+/>
+
+
+
+
+</motion.div>
+
+
+
+))}
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</section>
+
+
+);
+
 }

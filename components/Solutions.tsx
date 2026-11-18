@@ -6,28 +6,56 @@ import { SOLUTIONS_DATA } from "@/lib/data";
 
 export default function Solutions(){
 
-return(
+
+return (
 
 <section
+
 id="solutions"
+
 className="
 py-24
-bg-white
+bg-[#E8F2FE]
+dark:bg-[#050B1C]
 "
+
 >
+
 
 <div className="container-x">
 
 
+
+
+
+{/* Heading */}
+
+
 <div className="text-center">
 
+
+<p className="
+mb-3
+font-semibold
+text-[#334DAF]
+">
+
+Our Expertise
+
+</p>
+
+
+
 <h2
+
 className="
 text-4xl
-lg:text-5xl
 font-extrabold
-text-slate-900
+text-[#091F5C]
+lg:text-5xl
+dark:text-white
 "
+
 >
 
 Our Solutions
@@ -35,12 +63,16 @@ Our Solutions
 </h2>
 
 
+
 <p
+
 className="
 mt-4
 text-lg
 text-slate-600
+dark:text-slate-300
 "
+
 >
 
 Innovative technology solutions designed for industrial transformation.
@@ -48,87 +80,175 @@ Innovative technology solutions designed for industrial transformation.
 </p>
 
 
+
 </div>
 
 
 
+
+
+
+
+
+
 <div
+
 className="
 mt-12
 grid
+gap-6
 md:grid-cols-2
 lg:grid-cols-3
-gap-6
 "
+
 >
 
 
-{
-SOLUTIONS_DATA.map((solution,index)=>(
+{SOLUTIONS_DATA.map((solution,index)=>(
+
 
 
 <motion.div
 
+
 key={solution.title}
 
+
 initial={{
+
 opacity:0,
+
 y:30
+
 }}
+
+
 
 whileInView={{
+
 opacity:1,
+
 y:0
+
 }}
+
+
 
 viewport={{
+
 once:true
+
 }}
+
+
 
 transition={{
-duration:.5,
+
+duration:0.5,
+
 delay:index*0.1
+
 }}
 
+
+
+
 className="
+
+group
+
 rounded-3xl
+
 border
-border-slate-200
-bg-slate-50
+
+border-[#D0E4FE]
+
+bg-white
+
 p-8
-hover:bg-white
-hover:shadow-xl
-transition
+
+shadow-card
+
+transition-all
+
+duration-300
+
+hover:-translate-y-2
+
+dark:border-[#334DAF]
+
+dark:bg-[#091F5C]
+
 "
 
+
+
 >
+
+
+
+
+{/* Number */}
 
 
 <div
+
 className="
-h-12
-w-12
-rounded-xl
-bg-red-600
+
 flex
+
+h-12
+
+w-12
+
 items-center
+
 justify-center
-text-white
+
+rounded-xl
+
+bg-[#334DAF]
+
+text-lg
+
 font-bold
-text-xl
+
+text-white
+
+transition
+
+group-hover:bg-[#091F5C]
+
 "
+
 >
-{index + 1}
+
+{String(index + 1).padStart(2,"0")}
+
 </div>
 
 
+
+
+
+
+
 <h3
+
 className="
+
 mt-6
+
 text-xl
+
 font-bold
-text-slate-900
+
+text-[#091F5C]
+
+dark:text-white
+
 "
+
 >
 
 {solution.title}
@@ -136,12 +256,25 @@ text-slate-900
 </h3>
 
 
+
+
+
+
+
 <p
+
 className="
+
 mt-3
-text-slate-600
+
 leading-7
+
+text-slate-600
+
+dark:text-slate-300
+
 "
+
 >
 
 {solution.description}
@@ -149,21 +282,57 @@ leading-7
 </p>
 
 
+
+
+
+
+{/* Bottom Accent */}
+
+
+<div
+
+className="
+
+mt-6
+
+h-1
+
+w-10
+
+rounded-full
+
+bg-[#7096D1]
+
+transition-all
+
+group-hover:w-20
+
+"
+
+></div>
+
+
+
+
 </motion.div>
 
 
-))
 
-}
+))}
+
 
 
 </div>
+
+
+
 
 
 </div>
 
 
 </section>
+
 
 );
 

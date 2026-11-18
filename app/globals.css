@@ -3,13 +3,21 @@
 @tailwind utilities;
 
 html { scroll-behavior: smooth; scroll-padding-top: 76px; }
-body { @apply bg-white font-body text-slate-800 antialiased; }
-:focus-visible { outline: 3px solid #22d3ee; outline-offset: 2px; }
+body { @apply antialiased; background: #f9fbff; color:#091f5c; }
+.dark body{background: #050b1c; color:#f9fbff}
+:focus-visible { outline: 3px solid #7096d1; outline-offset: 2px; }
 
 @layer components {
   .container-x { @apply mx-auto w-full max-w-7xl px-5 sm:px-6; }
-  .btn { @apply inline-flex items-center justify-center rounded-xl px-6 py-3 text-[15px] font-medium transition duration-200 hover:-translate-y-0.5; }
-  .btn-primary { @apply btn bg-gradient-to-br from-electric to-[#0f4fd6] text-white shadow-cta; }
+  .btn { @apply inline-flex items-center justify-center rounded-xl px-6 py-3 text-[15px] font-medium transition duration-200 ; }
+  .btn-primary { @apply btn text-white; background: #334daf; }
+  .btn-primary:hover{background:#091f5c; transform: translate(-2px);}
+  .btn-secondary {@apply btn; background: #e8f2fe; color:#091f5c; }
+  .btn-secondary:hover{background: #d0e4fe;}
+  .btn-outline {@apply btn border; border-color:#334daf; color:#334daf; }
+  .btn-outline:hover{background:#334daf; color:white; }
+  /* cards */
+  .card{background: white; border: 1px solid #d0e4fe; border-radius: 1rem;}
   .btn-ghost { @apply btn border border-white/40 text-white hover:bg-white/10; }
 }
 

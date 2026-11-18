@@ -7,291 +7,531 @@ import { SERVICES } from "@/lib/data";
 
 export default function Services() {
 
-  const [active, setActive] = useState<number | null>(null);
 
+const [active,setActive] = useState<number | null>(null);
 
-  return (
 
-    <section
-      id="services"
-      className="bg-slate-50 py-24"
-    >
 
-      <div className="container-x">
+return (
 
 
-        {/* Heading */}
+<section
 
-        <div className="text-center">
+id="services"
 
-          <h2
-            className="
-            text-4xl
-            font-extrabold
-            text-slate-900
-            lg:text-5xl
-            "
-          >
-            Our Services
-          </h2>
+className="
+bg-surface
+py-24
+dark:bg-[#050B1C]
+"
 
+>
 
-          <p
-            className="
-            mt-4
-            text-lg
-            text-slate-600
-            "
-          >
-            Software solutions and engineering services for industrial transformation.
-          </p>
 
-        </div>
+<div className="container-x">
 
 
 
 
-        {/* MAIN SERVICE CARDS */}
 
+{/* Heading */}
 
-        <div
-          className="
-          mt-12
-          grid
-          gap-8
-          md:grid-cols-2
-          "
-        >
 
+<div className="text-center">
 
-          {SERVICES.map((service,index)=>(
 
-            <motion.div
+<p className="
+mb-3
+font-semibold
+text-brand
+">
 
-              key={service.title}
+Our Expertise
 
-              initial={{
-                opacity:0,
-                y:30
-              }}
+</p>
 
-              whileInView={{
-                opacity:1,
-                y:0
-              }}
 
-              viewport={{
-                once:true
-              }}
 
+<h2
 
-              className="
-              rounded-3xl
-              border
-              border-slate-400
-              bg-red
-              p-8
-              shadow-sm
-              "
-            >
+className="
+text-4xl
+font-extrabold
+text-brand-dark
+lg:text-5xl
+dark:text-white
+"
 
+>
 
-              <button
+Our Services
 
-                onClick={()=> 
-                  setActive(active === index ? null : index)
-                }
+</h2>
 
 
-                className="
-                flex
-                w-full
-                items-center
-                justify-between
-                text-left
-                "
-              >
 
+<p
 
-                <h3
-                  className="
-                  text-2xl
-                  font-bold
-                  text-red-600
-                  "
-                >
-                  {service.title}
-                </h3>
+className="
+mt-4
+text-lg
+text-slate-600
+dark:text-slate-300
+"
 
+>
 
-                <span
-                  className="
-                  text-3xl
-                  text-slate-400
-                  "
-                >
-                  {active === index ? "-" : "+"}
-                </span>
+Software solutions and engineering services for industrial transformation.
 
+</p>
 
-              </button>
 
 
+</div>
 
 
 
-              {/* SUB SERVICES */}
 
 
-              {active === index && (
 
-                <motion.div
 
-                  initial={{
-                    opacity:0,
-                    height:0
-                  }}
+{/* Service Cards */}
 
-                  animate={{
-                    opacity:1,
-                    height:"auto"
-                  }}
 
 
-                  className="
-                  mt-8
-                  space-y-5
-                  "
-                >
+<div
 
+className="
+mt-12
+grid
+gap-8
+md:grid-cols-2
+"
 
-                  {service.items.map((item)=>(
+>
 
 
-                    <div
 
-                      key={item.title}
+{SERVICES.map((service,index)=>(
 
-                      className="
-                      rounded-2xl
-                      bg-slate-50
-                      border
-                      border-slate-200
-                      p-6
-                      "
 
-                    >
 
+<motion.div
 
-                      <h4
-                        className="
-                        text-xl
-                        font-bold
-                        text-slate-900
-                        "
-                      >
-                        {item.title}
-                      </h4>
 
+key={service.title}
 
 
-                      <p
-                        className="
-                        mt-3
-                        leading-7
-                        text-slate-600
-                        "
-                      >
-                        {item.description}
-                      </p>
 
+initial={{
 
+opacity:0,
 
+y:30
 
-                      {/* FEATURES */}
+}}
 
-                      {
-                        item.features.length > 0 && (
 
-                          <ul
-                            className="
-                            mt-4
-                            list-disc
-                            space-y-2
-                            pl-5
-                            text-slate-600
-                            "
-                          >
 
-                            {item.features.map((feature)=>(
+whileInView={{
 
-                              <li key={feature}>
-                                {feature}
-                              </li>
+opacity:1,
 
-                            ))}
+y:0
 
-                          </ul>
+}}
 
-                        )
-                      }
 
 
+viewport={{
 
+once:true
 
+}}
 
-                      {/* PDF BUTTON */}
 
 
-                      <a
+transition={{
 
-                        href={item.pdf}
+duration:0.5
 
-                        target="_blank"
+}}
 
-                        className="
-                        mt-5
-                        inline-flex
-                        rounded-xl
-                        bg-red-600
-                        px-5
-                        py-2.5
-                        text-sm
-                        font-medium
-                        text-white
-                        hover:bg-red-700
-                        "
-                      >
-                        View Project Details
-                      </a>
 
 
+className="
 
-                    </div>
+rounded-3xl
 
+border
 
-                  ))}
+border-[#D0E4FE]
 
+bg-white
 
-                </motion.div>
+p-8
 
-              )}
+shadow-card
 
+transition
 
+hover:-translate-y-2
 
-            </motion.div>
+dark:border-[#334DAF]
 
+dark:bg-[#091F5C]
 
-          ))}
+"
 
 
-        </div>
 
+>
 
-      </div>
 
 
-    </section>
+<button
 
-  );
+
+onClick={()=>
+
+
+setActive(
+
+active===index
+
+?
+
+null
+
+:
+
+index
+
+)
+
+
+}
+
+
+
+className="
+
+flex
+
+w-full
+
+items-center
+
+justify-between
+
+text-left
+
+"
+
+
+
+>
+
+
+
+<h3
+
+className="
+
+text-2xl
+
+font-bold
+
+text-brand-dark
+
+dark:text-white
+
+"
+
+>
+
+{service.title}
+
+</h3>
+
+
+
+<span
+
+className="
+
+text-3xl
+
+font-light
+
+text-brand
+
+"
+
+>
+
+{active===index ? "-" : "+"}
+
+</span>
+
+
+
+</button>
+
+
+
+
+
+
+
+{/* Sub Services */}
+
+
+
+{active===index && (
+
+
+
+<motion.div
+
+
+initial={{
+
+opacity:0,
+
+height:0
+
+}}
+
+
+
+animate={{
+
+opacity:1,
+
+height:"auto"
+
+}}
+
+
+
+className="
+
+mt-8
+
+space-y-5
+
+"
+
+
+
+>
+
+
+
+{service.items.map((item)=>(
+
+
+
+<div
+
+key={item.title}
+
+className="
+
+rounded-2xl
+
+border
+
+border-[#D0E4FE]
+
+bg-[#F9FBFF]
+
+p-6
+
+dark:border-[#334DAF]
+
+dark:bg-[#102A63]
+
+"
+
+>
+
+
+
+<h4
+
+className="
+
+text-xl
+
+font-bold
+
+text-brand-dark
+
+dark:text-white
+
+"
+
+>
+
+{item.title}
+
+</h4>
+
+
+
+
+
+<p
+
+className="
+
+mt-3
+
+leading-7
+
+text-slate-600
+
+dark:text-slate-300
+
+"
+
+>
+
+{item.description}
+
+</p>
+
+
+
+
+
+
+
+{item.features.length > 0 && (
+
+
+<ul
+
+className="
+
+mt-4
+
+list-disc
+
+space-y-2
+
+pl-5
+
+text-slate-600
+
+dark:text-slate-300
+
+"
+
+>
+
+
+{item.features.map((feature)=>(
+
+
+<li key={feature}>
+
+{feature}
+
+</li>
+
+
+))}
+
+
+</ul>
+
+
+)}
+
+
+
+
+
+
+
+
+<a
+
+href={item.pdf}
+
+target="_blank"
+
+className="
+
+mt-5
+
+inline-flex
+
+rounded-xl
+
+bg-brand
+
+px-5
+
+py-3
+
+text-sm
+
+font-semibold
+
+text-white
+
+transition
+
+hover:bg-brand-dark
+
+"
+
+>
+
+View Project Details
+
+</a>
+
+
+
+</div>
+
+
+
+))}
+
+
+
+</motion.div>
+
+
+)}
+
+
+
+</motion.div>
+
+
+
+))}
+
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+);
+
+
 }

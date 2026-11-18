@@ -6,91 +6,69 @@ import Industries from "@/components/Industries";
 import Solutions from "@/components/Solutions";
 import Technologies from "@/components/Technology";
 import Projects from "@/components/Projects";
-import Blog from "@/components/Blog";
+import Blogs from "@/components/Blog";
 import Contact from "@/components/contact";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/chatbot";
-import { PROJECTS } from "@/lib/data";
 
 
 export default function Home() {
 
+
   return (
 
-    <>
+    <main className="overflow-hidden bg-surface">
 
+      {/* Navigation */}
       <Navbar />
 
 
-      <main>
+      {/* Hero Section */}
+      <Hero />
 
 
-        {/* Main Introduction */}
-
-        <Hero />
-
+      {/* About Company */}
+      <About />
 
 
-        {/* Company Information */}
-
-        <About />
-
+      {/* Services */}
+      <Services />
 
 
-        {/* Core Services */}
-
-        <Services />
-
+      {/* Industries */}
+      <Industries />
 
 
-        {/* Target Industries */}
-
-        <Industries />
-
+      {/* Solutions */}
+      <Solutions />
 
 
-        {/* Business Solutions */}
-
-        <Solutions />
-
+      {/* Technologies */}
+      <Technologies />
 
 
-        {/* Technical Expertise */}
-
-        <Technologies/>
-
+      {/* Projects */}
+      <Projects />
 
 
-        {/* Software Products */}
-
-        <Projects/>
-
+      {/* Blogs */}
+      <Blogs />
 
 
-        {/* Knowledge Section */}
-
-        <Blog />
-
+      {/* Contact */}
+      <Contact />
 
 
-        {/* Lead Generation */}
-
-        <Contact />
-
-
-      </main>
-
-      
-      <Chatbot />
-
-
-
-
-
+      {/* Footer */}
       <Footer />
 
 
-    </>
+      {/* AI Chatbot */}
+      <Chatbot />
+
+
+    </main>
 
   );
+
 }

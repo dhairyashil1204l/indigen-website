@@ -3,96 +3,478 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const navLinks =  [
+
+const navLinks = [
   {name:"Home", href:"#home"},
-  {name:"About Us", href:"#about"},
+  {name:"About", href:"#about"},
   {name:"Services", href:"#services"},
   {name:"Industries", href:"#industries"},
   {name:"Solutions", href:"#solutions"},
-  {name:"Technolgies", href:"#technologies"},
-  {name:"Projects", href:"projects"},
+  {name:"Technologies", href:"#technologies"},
+  {name:"Projects", href:"#projects"},
   {name:"Blogs", href:"#blogs"},
   {name:"Contact", href:"#contact"},
 ];
 
-export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
 
-    window.addEventListener("scroll", handleScroll);
+export default function Navbar(){
 
-    return () => window.removeEventListener("scroll", handleScroll)
 
-  }, []);
+const [scrolled,setScrolled]=useState(false);
 
-  return (
-    <header
-      className={`fixed left-0 top-5 z-50 w-full transition-all duration-300 $ {
-        scrolled
-          ? "bg-white shadow-lg py-3"
-          : "bg-transparent py-5"
-      }`}
-    >
-
-      <div className="container-x flex items-center justify-between">
-
-         {/* Logo */}
-
-        
-
-          <div>
-            <h2 className="text-xl font-extrabold text-red-600">
-              INDIGEN
-            </h2>
-
-            <p className="text-xs tracking-[0.25em] text-white">
-              TECHNOLOGIES
-            </p>
-          </div>
-     
+const [open,setOpen]=useState(false);
 
 
 
-        {/* Menu */}
+useEffect(()=>{
 
-        <nav className="hidden lg:flex items-center gap-8">
-          {navLinks.map((items) => (
-            <Link
-              key={items.name}
-              href={items.href}
-              className={`font-medium transition duration-300 ${
-                scrolled
-                ? "text-gray-800 hover:text-red-600"
-                : "text-white hover:text-red-400"
-              }`}
-            >
 
-              {items.name}
+const handleScroll=()=>{
 
-            </Link>
-          ))}
-        </nav>
+setScrolled(window.scrollY>40);
 
-        {/* CTA */}
+};
 
-        <Link
-  href="#contact"
-  className={`hidden rounded-lg px-6 py-3 font-semibold transition lg:block ${
-    scrolled
-      ? "bg-red-600 text-white hover:bg-red-700"
-      : "border border-white text-white hover:bg-white hover:text-red-600"
-  }`}
+
+window.addEventListener(
+"scroll",
+handleScroll
+);
+
+
+return()=>{
+
+window.removeEventListener(
+"scroll",
+handleScroll
+);
+
+}
+
+
+},[]);
+
+
+
+
+
+return(
+
+
+<header
+
+className={`
+fixed
+top-0
+left-0
+z-50
+w-full
+transition-all
+duration-300
+
+${
+scrolled
+
+?
+
+"bg-white/90 backdrop-blur-lg shadow-lg py-3"
+
+:
+
+"bg-transparent py-6"
+
+}
+
+`}
+
 >
-  Get Quote
+
+
+<div className="container-x">
+
+
+<div className="
+flex
+items-center
+justify-between
+">
+
+
+
+
+
+{/* LOGO */}
+
+
+<Link href="#home">
+
+
+<div>
+
+
+<h1
+
+className={`
+
+text-2xl
+
+font-extrabold
+
+tracking-wide
+
+${
+scrolled
+?
+"text-[#091F5C]"
+:
+"text-white"
+}
+
+`}
+
+>
+
+INDIGEN
+
+</h1>
+
+
+
+<p
+
+className={`
+
+text-[10px]
+
+tracking-[0.45em]
+
+font-medium
+
+${
+scrolled
+?
+"text-[#334DAF]"
+:
+"text-[#D0E4FE]"
+}
+
+`}
+
+>
+
+TECHNOLOGIES
+
+</p>
+
+
+
+</div>
+
+
 </Link>
 
-        
-      </div>
 
-    </header>
-  );
+
+
+
+
+
+
+
+{/* DESKTOP MENU */}
+
+
+
+<nav
+
+className="
+hidden
+lg:flex
+items-center
+gap-8
+"
+
+>
+
+
+{
+navLinks.map((item)=>(
+
+
+<Link
+
+key={item.name}
+
+href={item.href}
+
+className={`
+
+text-sm
+
+font-medium
+
+transition
+
+${
+scrolled
+
+?
+
+"text-[#091F5C] hover:text-[#334DAF]"
+
+:
+
+"text-white hover:text-[#D0E4FE]"
+
+}
+
+`}
+
+>
+
+{item.name}
+
+</Link>
+
+
+))
+
+
+}
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+
+{/* CTA */}
+
+
+
+<Link
+
+
+href="#contact"
+
+
+className={`
+
+hidden
+
+lg:block
+
+rounded-xl
+
+px-6
+
+py-3
+
+font-semibold
+
+transition
+
+
+${
+scrolled
+
+?
+
+"bg-[#334DAF] text-white hover:bg-[#091F5C]"
+
+:
+
+"border border-white text-white hover:bg-white hover:text-[#091F5C]"
+
+}
+
+`}
+
+
+>
+
+Get Quote
+
+</Link>
+
+
+
+
+
+
+
+
+
+{/* MOBILE BUTTON */}
+
+
+
+<button
+
+
+onClick={()=>setOpen(!open)}
+
+
+className="
+lg:hidden
+text-2xl
+"
+
+>
+
+
+<span
+
+className={
+
+scrolled
+
+?
+
+"text-[#091F5C]"
+
+:
+
+"text-white"
+
+}
+
+>
+
+{open ? "✕":"☰"}
+
+</span>
+
+
+
+</button>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+{/* MOBILE MENU */}
+
+
+
+{
+open && (
+
+<div
+
+className="
+lg:hidden
+mt-5
+rounded-2xl
+bg-white
+p-6
+shadow-xl
+"
+
+>
+
+
+<nav
+
+className="
+flex
+flex-col
+gap-5
+"
+
+>
+
+
+{
+navLinks.map(item=>(
+
+
+<Link
+
+key={item.name}
+
+href={item.href}
+
+onClick={()=>setOpen(false)}
+
+className="
+font-medium
+text-[#091F5C]
+hover:text-[#334DAF]
+"
+
+>
+
+{item.name}
+
+</Link>
+
+
+))
+
+}
+
+
+
+<Link
+
+href="#contact"
+
+className="
+rounded-xl
+bg-[#334DAF]
+px-5
+py-3
+text-center
+font-semibold
+text-white
+"
+
+>
+
+Get Quote
+
+</Link>
+
+
+
+</nav>
+
+
+</div>
+
+)
+
+}
+
+
+
+
+</div>
+
+
+
+</header>
+
+
+);
+
+
 }

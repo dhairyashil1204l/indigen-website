@@ -1,287 +1,446 @@
 import Link from "next/link";
 
 
-export default function Footer() {
+export default function Footer(){
 
-  return (
 
-    <footer
-      className="
-      bg-gradient-to-br
-      from-red-900
-      to-red-500
-      
-      text-white
-      "
-    >
+return (
 
-      <div
-        className="
-        container-x
-        py-16
-        "
-      >
 
+<footer
 
-        <div
-          className="
-          grid
-          gap-10
-          md:grid-cols-2
-          lg:grid-cols-4
-          "
-        >
+className="
+bg-[#091F5C]
+text-white
+"
 
+>
 
 
-          
+<div className="
+container-x
+py-16
+">
 
 
 
+<div
 
+className="
+grid
+gap-10
+md:grid-cols-2
+lg:grid-cols-4
+"
 
+>
 
-          {/* QUICK LINKS */}
 
-          <div>
 
-            <h4
-              className="
-              text-lg
-              font-semibold
-              "
-            >
-              QUICK LINKS
-            </h4>
 
 
-            <ul
-              className="
-              mt-4
-              space-y-3
-              text-white/100
-              "
-            >
+{/* COMPANY */}
 
-              <li>
-                <Link href="#about">
-                  About Us
-                </Link>
-              </li>
 
+<div>
 
-              <li>
-                <Link href="#services">
-                  Services
-                </Link>
-              </li>
 
+<h3
 
-            
+className="
+text-2xl
+font-extrabold
+"
 
+>
 
-              <li>
-                <Link href="#blog">
-                  Blogs
-                </Link>
-              </li>
+INDIGEN
 
+</h3>
 
-              <li>
-                <Link href="#contact">
-                  Contact
-                </Link>
-              </li>
 
+<p
 
-            </ul>
+className="
+mt-1
+text-sm
+tracking-[0.35em]
+text-[#7096D1]
+"
 
+>
 
-          </div>
+TECHNOLOGIES
 
+</p>
 
 
 
+<p
 
+className="
+mt-5
+leading-7
+text-slate-300
+"
 
+>
 
+Engineering intelligent software solutions
+for manufacturing, automation and enterprise
+transformation.
 
-          {/* SERVICES */}
+</p>
 
-          <div>
 
-            <h4
-              className="
-              text-lg
-              font-semibold
-              "
-            >
-              SERVICES
-            </h4>
+</div>
 
 
-            <ul
-              className="
-              mt-4
-              space-y-3
-              text-white/100
-              "
-            >
 
-              <li>
-                SaaS Software Solutions
-              </li>
 
 
-              <li>
-                Software Development
-              </li>
 
 
-              <li>
-                Industrial Automation
-              </li>
+{/* QUICK LINKS */}
 
 
-              <li>
-                Engineering Software
-              </li>
+<div>
 
 
-            </ul>
+<h4
 
+className="
+text-lg
+font-semibold
+"
 
-          </div>
+>
 
+Quick Links
 
+</h4>
 
 
 
+<ul
 
+className="
+mt-5
+space-y-3
+text-slate-300
+"
 
+>
 
 
-          {/* CONTACT */}
+<li>
 
-          <div>
+<Link
 
-            <h4
-              className="
-              text-lg
-              font-semibold
-              "
-            >
-              CONTACT
-            </h4>
+className="hover:text-[#7096D1]"
 
+href="#about"
 
+>
 
-            <div
-              className="
-              mt-3
-              space-y-4
-              text-white/100
-              "
-            >
+About Us
 
-              
-                Indigen Technologies, Pune, Maharashtra, India
-              
+</Link>
 
+</li>
 
-              <p>
-                enquiry@indigentech.com
-              </p>
 
 
-              <p>
-                +91 9075000427
-              </p>
+<li>
 
+<Link
 
-            </div>
+className="hover:text-[#7096D1]"
 
+href="#services"
 
-          </div>
+>
 
+Services
 
+</Link>
 
-        </div>
+</li>
 
 
 
+<li>
 
+<Link
 
+className="hover:text-[#7096D1]"
 
+href="#projects"
 
-        {/* GOOGLE MAP */}
+>
 
+Projects
 
-        <div
-          className="
-          mt-12
-          overflow-hidden
-          rounded-3xl
-          border
-          border-white/500
-          "
-        >
+</Link>
 
-          <iframe
+</li>
 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2580295033003!2d73.7837066!3d18.5624023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2becde2274201%3A0xe4a108f6a3e26367!2sIndigen%20Technologies!5e0!3m2!1sen!2sin!4v1793012472920!5m2!1sen!2sin"
 
-            width="100%"
 
-            height="350"
 
-            loading="lazy"
+<li>
 
-            className="
-            w-full
-            border-0
-            "
+<Link
 
-            allowFullScreen
+className="hover:text-[#7096D1]"
 
-            referrerPolicy="strict-origin-when-cross-origin"
+href="#contact"
 
-          />
+>
 
-        </div>
+Contact
 
+</Link>
 
+</li>
 
-      </div>
 
 
+</ul>
 
 
+</div>
 
 
 
-      {/* COPYRIGHT */}
 
 
-      <div
-        className="
-        border-t
-        border-white/30
-        py-5
-        text-center
-        text-sm
-        text-white/900
-        "
-      >
 
-        © 2026 Indigen Technologies. All Rights Reserved.
 
-      </div>
 
 
+{/* SERVICES */}
 
-    </footer>
 
-  );
+
+<div>
+
+
+<h4
+
+className="
+text-lg
+font-semibold
+"
+
+>
+
+Services
+
+</h4>
+
+
+
+<ul
+
+className="
+mt-5
+space-y-3
+text-slate-300
+"
+
+>
+
+
+<li>Software Development</li>
+
+<li>AI & Automation</li>
+
+<li>Industrial Solutions</li>
+
+<li>Enterprise Software</li>
+
+
+
+</ul>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+{/* CONTACT */}
+
+
+
+<div>
+
+
+<h4
+
+className="
+text-lg
+font-semibold
+"
+
+>
+
+Contact
+
+</h4>
+
+
+
+<div
+
+className="
+mt-5
+space-y-4
+text-slate-300
+"
+
+>
+
+
+<p>
+
+📍 Pune, Maharashtra, India
+
+</p>
+
+
+<p>
+
+✉ enquiry@indigentech.com
+
+</p>
+
+
+
+<p>
+
+☎ +91 9075000427
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+{/* MAP */}
+
+
+<div
+
+className="
+mt-12
+overflow-hidden
+rounded-3xl
+border
+border-[#334DAF]
+"
+
+>
+
+
+<iframe
+
+
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2580295033003!2d73.7837066!3d18.5624023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2becde2274201%3A0xe4a108f6a3e26367!2sIndigen%20Technologies!5e0!3m2!1sen!2sin!4v1793012472920!5m2!1sen!2sin"
+
+
+width="100%"
+
+height="350"
+
+loading="lazy"
+
+className="
+w-full
+border-0
+"
+
+
+allowFullScreen
+
+
+referrerPolicy="strict-origin-when-cross-origin"
+
+
+/>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+{/* COPYRIGHT */}
+
+
+
+<div
+
+className="
+border-t
+border-white/20
+py-5
+text-center
+text-sm
+text-slate-300
+"
+
+>
+
+
+© 2026 Indigen Technologies. All Rights Reserved.
+
+
+</div>
+
+
+
+
+
+</footer>
+
+
+);
+
 
 }
