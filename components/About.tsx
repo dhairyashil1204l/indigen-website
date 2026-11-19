@@ -3,73 +3,79 @@
 import { motion } from "framer-motion";
 
 
-export default function About() {
+export default function About(){
 
 
-return (
+return(
 
 <section
+
 id="about"
+
 className="
 relative
 bg-[#050B1C]
-pt-16
-pb-28
+py-28
 text-white
 "
+
 >
 
 
 <div className="container-x">
 
-  <div
-className="
-mx-auto
-mb-16
-h-px
-
-"
-/>
-
 
 
 {/* HEADER */}
 
-<div className="max-w-4xl">
+
+<div
+className="
+max-w-4xl
+"
+>
 
 
 <p
+
 className="
 text-sm
 uppercase
 tracking-[0.3em]
 text-blue-400
+font-semibold
 "
+
 >
 
-About Indigen
+About Indigen Technologies
 
 </p>
 
 
+
 <h2
+
 className="
 mt-5
 text-4xl
 font-extrabold
 leading-tight
-lg:text-5xl
+md:text-5xl
+lg:text-6xl
 "
+
 >
 
-Building Digital Systems
-That Power Industrial Innovation
+Building Intelligent Systems
+That Empower Industries
 
 </h2>
 
 
 
 <p
+
 className="
 mt-6
 max-w-3xl
@@ -77,11 +83,13 @@ text-lg
 leading-8
 text-slate-300
 "
+
 >
 
-We engineer custom software solutions that connect
-technology, automation and intelligence to help
-businesses achieve operational excellence.
+We design and develop reliable software solutions
+that combine engineering expertise, automation and
+emerging technologies to help businesses grow in
+the digital era.
 
 </p>
 
@@ -95,31 +103,34 @@ businesses achieve operational excellence.
 
 
 
-{/* MAIN */}
+{/* MAIN CONTENT */}
+
 
 
 <div
+
 className="
 mt-16
 grid
+items-center
 gap-14
 lg:grid-cols-2
-items-center
 "
+
 >
 
 
 
 
+{/* LEFT */}
 
-{/* STORY */}
 
 
 <motion.div
 
 initial={{
 opacity:0,
-x:-30
+x:-40
 }}
 
 whileInView={{
@@ -134,46 +145,54 @@ once:true
 >
 
 
+
 <h3
+
 className="
 text-2xl
 font-bold
 "
+
 >
 
-Engineering Beyond Software
+Engineering Excellence
 
 </h3>
 
 
 
 <p
+
 className="
 mt-5
 leading-8
 text-slate-300
 "
+
 >
 
-At Indigen Technologies, we combine software engineering,
-industrial expertise and emerging technologies to build
-solutions for modern enterprises.
+At Indigen Technologies, we build scalable
+enterprise applications, industrial automation
+systems and AI-powered platforms designed
+around real business requirements.
 
 </p>
 
 
 
 <p
+
 className="
 mt-5
 leading-8
 text-slate-300
 "
+
 >
 
-From enterprise applications and industrial automation
-to AI-powered platforms, we help organizations transform
-their ideas into scalable digital solutions.
+Our approach focuses on innovation, performance
+and long-term reliability to deliver technology
+solutions that create measurable impact.
 
 </p>
 
@@ -182,12 +201,18 @@ their ideas into scalable digital solutions.
 
 
 
+{/* STATS */}
+
+
+
 <div
+
 className="
 mt-10
 flex
-gap-10
+gap-12
 "
+
 >
 
 
@@ -267,7 +292,6 @@ Support
 </div>
 
 
-
 </div>
 
 
@@ -282,7 +306,8 @@ Support
 
 
 
-{/* TECHNOLOGY PANEL */}
+
+{/* RIGHT PANEL */}
 
 
 
@@ -290,12 +315,12 @@ Support
 
 initial={{
 opacity:0,
-scale:.95
+y:30
 }}
 
 whileInView={{
 opacity:1,
-scale:1
+y:0
 }}
 
 viewport={{
@@ -308,71 +333,102 @@ border
 border-white/10
 bg-white/5
 p-10
-backdrop-blur
+backdrop-blur-xl
 "
 
 >
 
 
 <p
+
 className="
 text-blue-400
+uppercase
+tracking-widest
+text-sm
 font-semibold
 "
+
 >
-Our Capabilities
+Our Expertise
 </p>
 
 
 
+
+<h3
+
+className="
+mt-5
+text-3xl
+font-bold
+"
+
+>
+
+Technology Built
+For Industry Needs
+
+</h3>
+
+
+
+
 <div
+
 className="
 mt-8
-space-y-6
+space-y-5
 "
+
 >
 
 
 {
 [
 "Custom Software Development",
-"Industrial Automation Systems",
-"AI & Intelligent Applications",
-"Enterprise Digital Solutions"
+"Industrial Automation",
+"Artificial Intelligence",
+"Enterprise Solutions"
 ].map((item)=>(
+
+
 <div
+
 key={item}
+
 className="
 flex
 items-center
 gap-4
 border-b
 border-white/10
-pb-5
+pb-4
 "
+
 >
 
 
-<div
+<span
+
 className="
 h-3
 w-3
 rounded-full
-bg-blue-500
+bg-blue-400
 "
+
 />
 
 
-<p
-className="
-text-lg
-"
->
+<p>
 {item}
 </p>
 
 
 </div>
+
+
 ))
 }
 
@@ -386,78 +442,7 @@ text-lg
 
 
 
-
 </div>
-
-
-
-
-
-
-{/* VALUES */}
-
-
-<div
-className="
-mt-20
-grid
-gap-8
-md:grid-cols-3
-"
->
-
-
-{
-[
-{
-title:"Engineering Excellence",
-desc:"Reliable and scalable solutions built with precision."
-},
-{
-title:"Industry Focus",
-desc:"Technology solutions designed for real business needs."
-},
-{
-title:"Future Ready",
-desc:"AI-driven systems prepared for tomorrow."
-}
-].map((item)=>(
-<div
-key={item.title}
-className="
-border-t
-border-blue-500/40
-pt-6
-"
->
-
-<h4
-className="
-text-xl
-font-bold
-"
->
-{item.title}
-</h4>
-
-
-<p
-className="
-mt-3
-text-slate-400
-"
->
-{item.desc}
-</p>
-
-
-</div>
-))
-}
-
-
-</div>
-
 
 
 

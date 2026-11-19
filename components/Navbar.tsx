@@ -22,17 +22,15 @@ export default function Navbar(){
 
 
 const [scrolled,setScrolled]=useState(false);
-
 const [open,setOpen]=useState(false);
 
 
 
 useEffect(()=>{
 
-
 const handleScroll=()=>{
 
-setScrolled(window.scrollY>40);
+setScrolled(window.scrollY > 40);
 
 };
 
@@ -52,10 +50,7 @@ handleScroll
 
 }
 
-
 },[]);
-
-
 
 
 
@@ -63,44 +58,93 @@ return(
 
 
 <header
-
-className={`
+className="
 fixed
-top-0
+top-5
 left-0
 z-50
 w-full
-transition-all
-duration-300
-
-${
-scrolled
-
-?
-
-"bg-white/90 backdrop-blur-lg shadow-lg py-3"
-
-:
-
-"bg-transparent py-6"
-
-}
-
-`}
-
+"
 >
 
 
 <div className="container-x">
 
 
-<div className="
+<div
+
+className="
+relative
+overflow-hidden
 flex
 items-center
 justify-between
-">
+rounded-3xl
+border
+border-white/30
+bg-white/10
+backdrop-blur-2xl
+shadow-[0_0_35px_rgba(59,130,246,0.35)]
+px-6
+py-4
+transition-all
+duration-500
+"
+
+>
+
+  <div
+  className="
+  absolute
+  -inset-[2px]
+  rounded-3xl
+  bg-gradient-to-r
+  from-transparent
+  via-blue-400/50
+  to-transparent
+  opacity-60
+  blur-sm
+  animate-pulse
+  pointer-events-none
+
+  "
+  />
 
 
+
+{/* GLASS SHINE */}
+
+<div
+
+className="
+absolute
+inset-0
+bg-gradient-to-r
+from-transparent
+via-white/25
+to-transparent
+opacity-10
+pointer-events-none
+"
+
+/>
+
+
+
+{/* INNER CONTENT */}
+
+<div
+
+className="
+relative
+z-10
+flex
+w-full
+items-center
+justify-between
+"
+
+>
 
 
 
@@ -115,23 +159,12 @@ justify-between
 
 <h1
 
-className={`
-
+className="
 text-2xl
-
 font-extrabold
-
 tracking-wide
-
-${
-scrolled
-?
-"text-[#091F5C]"
-:
-"text-white"
-}
-
-`}
+text-white
+"
 
 >
 
@@ -140,33 +173,20 @@ INDIGEN
 </h1>
 
 
-
 <p
 
-className={`
-
+className="
 text-[10px]
-
-tracking-[0.45em]
-
 font-medium
-
-${
-scrolled
-?
-"text-[#334DAF]"
-:
-"text-[#D0E4FE]"
-}
-
-`}
+tracking-[0.45em]
+text-blue-100
+"
 
 >
 
 TECHNOLOGIES
 
 </p>
-
 
 
 </div>
@@ -181,9 +201,7 @@ TECHNOLOGIES
 
 
 
-
-{/* DESKTOP MENU */}
-
+{/* DESKTOP NAV */}
 
 
 <nav
@@ -192,7 +210,7 @@ className="
 hidden
 lg:flex
 items-center
-gap-8
+gap-7
 "
 
 >
@@ -208,28 +226,13 @@ key={item.name}
 
 href={item.href}
 
-className={`
-
+className="
 text-sm
-
 font-medium
-
+text-white
 transition
-
-${
-scrolled
-
-?
-
-"text-[#091F5C] hover:text-[#334DAF]"
-
-:
-
-"text-white hover:text-[#D0E4FE]"
-
-}
-
-`}
+hover:text-blue-200
+"
 
 >
 
@@ -240,9 +243,7 @@ scrolled
 
 ))
 
-
 }
-
 
 
 </nav>
@@ -258,45 +259,27 @@ scrolled
 {/* CTA */}
 
 
-
 <Link
-
 
 href="#contact"
 
-
-className={`
-
+className="
 hidden
-
-lg:block
-
 rounded-xl
-
+border
+border-white/30
+bg-white/10
 px-6
-
 py-3
-
+text-sm
 font-semibold
-
+text-white
+backdrop-blur-md
 transition
-
-
-${
-scrolled
-
-?
-
-"bg-[#334DAF] text-white hover:bg-[#091F5C]"
-
-:
-
-"border border-white text-white hover:bg-white hover:text-[#091F5C]"
-
-}
-
-`}
-
+hover:bg-white
+hover:text-[#091F5C]
+lg:block
+"
 
 >
 
@@ -315,49 +298,27 @@ Get Quote
 {/* MOBILE BUTTON */}
 
 
-
 <button
-
 
 onClick={()=>setOpen(!open)}
 
-
 className="
 lg:hidden
+relative
+z-10
 text-2xl
+text-white
 "
-
->
-
-
-<span
-
-className={
-
-scrolled
-
-?
-
-"text-[#091F5C]"
-
-:
-
-"text-white"
-
-}
 
 >
 
 {open ? "✕":"☰"}
 
-</span>
-
-
-
 </button>
 
 
 
+</div>
 
 
 </div>
@@ -373,19 +334,22 @@ scrolled
 {/* MOBILE MENU */}
 
 
-
 {
+
 open && (
 
 <div
 
 className="
-lg:hidden
-mt-5
-rounded-2xl
-bg-white
+mt-4
+rounded-3xl
+border
+border-white/20
+bg-[#091F5C]/90
 p-6
+backdrop-blur-xl
 shadow-xl
+lg:hidden
 "
 
 >
@@ -416,8 +380,8 @@ onClick={()=>setOpen(false)}
 
 className="
 font-medium
-text-[#091F5C]
-hover:text-[#334DAF]
+text-white
+hover:text-blue-200
 "
 
 >
@@ -454,7 +418,6 @@ Get Quote
 </Link>
 
 
-
 </nav>
 
 
@@ -466,15 +429,12 @@ Get Quote
 
 
 
-
 </div>
-
 
 
 </header>
 
 
 );
-
 
 }
