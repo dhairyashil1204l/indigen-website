@@ -1,46 +1,334 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { SOLUTIONS_DATA } from "@/lib/data";
+
+
+function SolutionCard({
+  data,
+  active = false,
+  blur = false,
+  outer = false,
+}: {
+  data:{
+    title:string;
+    description:string;
+  };
+  active?:boolean;
+  blur?:boolean;
+  outer?:boolean;
+}) {
+
+
+return (
+
+<div
+
+className={`
+h-[340px]
+w-[330px]
+rounded-3xl
+border
+p-8
+flex
+flex-col
+justify-center
+transition-all
+duration-500
+
+
+${
+active
+
+?
+
+`
+relative
+z-30
+border-blue-400
+bg-[#0B1F3A]
+shadow-[0_25px_100px_rgba(37,99,235,0.55)]
+scale-[1.03]
+`
+
+:
+
+`
+relative
+z-10
+border-white/20
+bg-white/[0.10]
+backdrop-blur-xl
+
+${blur ? "blur-[2px] opacity-80" : ""}
+
+${outer ? "blur-[4px] opacity-65" : ""}
+
+`
+
+}
+
+`}
+
+>
+
+
+<h3
+
+className="
+text-2xl
+font-bold
+leading-tight
+text-white
+"
+
+>
+
+{data.title}
+
+</h3>
+
+
+
+
+<p
+
+className="
+mt-5
+text-sm
+leading-7
+text-slate-300
+"
+
+>
+
+{data.description}
+
+</p>
+
+
+
+
+<div
+
+className="
+mt-8
+h-px
+bg-white/15
+"
+
+/>
+
+
+
+
+
+<p
+
+className="
+mt-5
+text-sm
+font-semibold
+text-blue-300
+"
+
+>
+
+Explore Solution →
+
+</p>
+
+
+
+</div>
+
+);
+
+}
+
+
+
+
+
+
+
 
 
 export default function Solutions(){
 
 
+const [active,setActive]=useState(0);
+
+
+
+const next=()=>{
+
+setActive((prev)=>
+
+prev===SOLUTIONS_DATA.length-1
+?
+0
+:
+prev+1
+
+);
+
+};
+
+
+
+
+const previous=()=>{
+
+setActive((prev)=>
+
+prev===0
+?
+SOLUTIONS_DATA.length-1
+:
+prev-1
+
+);
+
+};
+
+
+
+
+
+const getIndex=(offset:number)=>{
+
+
+let index=active+offset;
+
+
+while(index<0){
+
+index+=SOLUTIONS_DATA.length;
+
+}
+
+
+while(index>=SOLUTIONS_DATA.length){
+
+index-=SOLUTIONS_DATA.length;
+
+}
+
+
+return index;
+
+};
+
+
+
+
+
+
+
+
 return (
+
 
 <section
 
 id="solutions"
 
 className="
-py-24
-bg-[#E8F2FE]
-dark:bg-[#050B1C]
+relative
+overflow-hidden
+bg-gradient-to-b
+from-[#07152F]
+via-[#050B1C]
+to-[#050B1C]
+py-28
+text-white
 "
 
 >
 
 
-<div className="container-x">
+{/* INDUSTRIES TO SOLUTIONS PREMIUM BLEND */}
+
+
+<div
+
+className="
+absolute
+top-0
+left-1/2
+-translate-x-1/2
+w-[800px]
+h-[180px]
+rounded-full
+bg-blue-500/20
+blur-[140px]
+"
+
+/>
+
+
+
+<div
+
+className="
+absolute
+top-0
+left-0
+w-full
+h-32
+bg-gradient-to-b
+from-[#07152F]
+to-transparent
+pointer-events-none
+"
+
+/>
 
 
 
 
 
-{/* Heading */}
+
+<div
+
+className="
+absolute
+inset-0
+opacity-[0.05]
+bg-[linear-gradient(#3b82f6_1px,transparent_1px),linear-gradient(90deg,#3b82f6_1px,transparent_1px)]
+bg-[size:40px_40px]
+"
+
+/>
+
+
+
+
+
+<div className="container-x relative z-10">
+
+
+
 
 
 <div className="text-center">
 
 
-<p className="
-mb-3
-font-semibold
-text-[#334DAF]
-">
+<p
 
-Our Expertise
+className="
+text-sm
+font-bold
+uppercase
+tracking-[0.35em]
+text-blue-400
+"
+
+>
+
+Our Solutions
 
 </p>
 
@@ -49,39 +337,187 @@ Our Expertise
 <h2
 
 className="
-text-4xl
+mt-5
+text-5xl
 font-extrabold
-text-[#091F5C]
-lg:text-5xl
-dark:text-white
 "
 
 >
 
-Our Solutions
+Technology Solutions
 
 </h2>
 
 
+</div>
 
-<p
+
+
+
+
+
+
+
+
+<motion.div
+
+
+key={active}
+
+
+initial={{
+opacity:0,
+x:40
+}}
+
+animate={{
+opacity:1,
+x:0
+}}
+
+transition={{
+duration:0.35
+}}
+
+
+
+drag="x"
+
+dragConstraints={{
+left:0,
+right:0
+}}
+
+dragElastic={0.15}
+
+
+onDragEnd={(e,info)=>{
+
+
+if(info.offset.x < -80){
+
+next();
+
+}
+
+
+if(info.offset.x > 80){
+
+previous();
+
+}
+
+
+}}
+
 
 className="
-mt-4
-text-lg
-text-slate-600
-dark:text-slate-300
+relative
+mt-16
+grid
+grid-cols-5
+gap-5
+cursor-grab
 "
 
 >
 
-Innovative technology solutions designed for industrial transformation.
-
-</p>
 
 
+
+
+
+
+<SolutionCard
+
+data={
+SOLUTIONS_DATA[getIndex(-2)]
+}
+
+outer
+
+/>
+
+
+
+
+
+
+
+<SolutionCard
+
+data={
+SOLUTIONS_DATA[getIndex(-1)]
+}
+
+blur
+
+/>
+
+
+
+
+
+
+
+
+
+{/* FRONT CENTER CARD */}
+
+<div className="relative z-30">
+
+<SolutionCard
+
+data={
+SOLUTIONS_DATA[active]
+}
+
+active
+
+/>
 
 </div>
+
+
+
+
+
+
+
+
+<SolutionCard
+
+data={
+SOLUTIONS_DATA[getIndex(1)]
+}
+
+blur
+
+/>
+
+
+
+
+
+
+
+
+<SolutionCard
+
+data={
+SOLUTIONS_DATA[getIndex(2)]
+}
+
+outer
+
+/>
+
+
+
+
+
+
+</motion.div>
 
 
 
@@ -95,230 +531,60 @@ Innovative technology solutions designed for industrial transformation.
 
 className="
 mt-12
-grid
-gap-6
-md:grid-cols-2
-lg:grid-cols-3
-"
-
->
-
-
-{SOLUTIONS_DATA.map((solution,index)=>(
-
-
-
-<motion.div
-
-
-key={solution.title}
-
-
-initial={{
-
-opacity:0,
-
-y:30
-
-}}
-
-
-
-whileInView={{
-
-opacity:1,
-
-y:0
-
-}}
-
-
-
-viewport={{
-
-once:true
-
-}}
-
-
-
-transition={{
-
-duration:0.5,
-
-delay:index*0.1
-
-}}
-
-
-
-
-className="
-
-group
-
-rounded-3xl
-
-border
-
-border-[#D0E4FE]
-
-bg-white
-
-p-8
-
-shadow-card
-
-transition-all
-
-duration-300
-
-hover:-translate-y-2
-
-dark:border-[#334DAF]
-
-dark:bg-[#091F5C]
-
-"
-
-
-
->
-
-
-
-
-{/* Number */}
-
-
-<div
-
-className="
-
 flex
-
-h-12
-
-w-12
-
-items-center
-
 justify-center
-
-rounded-xl
-
-bg-[#334DAF]
-
-text-lg
-
-font-bold
-
-text-white
-
-transition
-
-group-hover:bg-[#091F5C]
-
+gap-5
 "
 
 >
 
-{String(index + 1).padStart(2,"0")}
 
-</div>
+<button
 
-
-
-
-
-
-
-<h3
+onClick={previous}
 
 className="
-
-mt-6
-
-text-xl
-
-font-bold
-
-text-[#091F5C]
-
-dark:text-white
-
-"
-
->
-
-{solution.title}
-
-</h3>
-
-
-
-
-
-
-
-<p
-
-className="
-
-mt-3
-
-leading-7
-
-text-slate-600
-
-dark:text-slate-300
-
-"
-
->
-
-{solution.description}
-
-</p>
-
-
-
-
-
-
-{/* Bottom Accent */}
-
-
-<div
-
-className="
-
-mt-6
-
-h-1
-
-w-10
-
+h-14
+w-14
 rounded-full
-
-bg-[#7096D1]
-
-transition-all
-
-group-hover:w-20
-
+border
+border-white/20
+bg-white/10
+text-2xl
+hover:bg-blue-500/20
+transition
 "
 
-></div>
+>
+
+←
+
+</button>
 
 
 
 
-</motion.div>
+<button
 
+onClick={next}
 
+className="
+h-14
+w-14
+rounded-full
+border
+border-white/20
+bg-white/10
+text-2xl
+hover:bg-blue-500/20
+transition
+"
 
-))}
+>
+
+→
+
+</button>
 
 
 
@@ -328,11 +594,10 @@ group-hover:w-20
 
 
 
-</div>
 
+</div>
 
 </section>
-
 
 );
 

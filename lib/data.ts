@@ -229,97 +229,89 @@ export const ABOUT_DATA = {
 
 
 export const INDUSTRIES = [
-  {
-    title: "Manufacturing Industry",
-    description:
-    "Advanced software solutions for production monitoring, automation systems, CNC machines and manufacturing processes.",
-    
-    
-  },
 
-  {
-    title: "Medical Equipment",
-    description:
-    "Reliable software solutions for medical devices, biochemistry analysers and healthcare equipment.",
-    
-  },
+{
+title:"Manufacturing",
+description:
+"Smart software solutions and automation systems to optimize industrial operations."
+},
 
-  {
-    title: "Automotive Engineering",
-    description:
-    "Engineering applications, automation solutions and testing systems for automotive industries.",
-    
 
-  },
+{
+title:"Healthcare",
+description:
+"Reliable software platforms for medical instruments, diagnostics and healthcare management."
+},
 
-  {
-    title: "Power & Energy",
-    description:
-    "Industrial software solutions for energy management and power sector applications.",
-    
-  },
- 
-  {
-    title: "Engineering Solutions",
-    description:
-    "2D/3D simulation, modeling and engineering analysis software solutions.",
-    
-  },
 
-  {
-    title: "Industrial Automation",
-    description:
-    "Automation systems, insoection solutions and smart industrial applications.",
-    
-  },
+{
+title:"Automotive",
+description:
+"Digital solutions that improve automotive engineering, production and workflow efficiency."
+},
+
+
+{
+title:"Engineering",
+description:
+"Advanced software solutions supporting engineering processes and industrial innovation."
+},
+
+
+{
+title:"Energy",
+description:
+"Intelligent systems for monitoring, automation and efficient energy management."
+},
+
+
+{
+title:"Enterprise",
+description:
+"Scalable business applications that enhance productivity and digital transformation."
+}
+
 ];
 
-export const SOLUTIONS_DATA= [
+export const SOLUTIONS_DATA = [
 
   {
-    title:"Industrial Automation Solutions",
+    title: "Industrial Automation Solutions",
     description:
-    "Complete automation software solutions for manufacturing industries including process control, monitorinf and machine integration.",
-    
+      "Complete automation software solutions for manufacturing industries including process control, monitoring and machine integration.",
   },
 
   {
-    title:"CNC Machine Solutions",
+    title: "CNC Machine Solutions",
     description:
-    "Software solutions for CNC lathe, CNC milling machines and automated products systems.",
-    
+      "Software solutions for CNC lathe, CNC milling machines and automated production systems.",
   },
 
   {
     title: "Simulation & Modelling",
     description:
       "Advanced 2D and 3D simulation solutions for engineering analysis and product development.",
-    
   },
 
   {
     title: "Testing & Inspection Systems",
     description:
-    "Automated testing quality control and inspection software for industrial applications.",
-    
+      "Automated testing, quality control and inspection software for industrial applications.",
   },
 
   {
     title: "Enterprise Software Solutions",
     description:
-    "Custom business applications, portals and software systems integrated with enterprise workflow.",
-    
+      "Custom business applications, portals and software systems integrated with enterprise workflows.",
   },
 
   {
     title: "Medical Software Solutions",
     description:
-    "Reliable software development for medical equipment and healthcare technology.",
-    
-
+      "Reliable software development solutions for medical equipment and healthcare technology.",
   },
-];
 
+];
 
 
 export const PROJECTS = [

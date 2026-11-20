@@ -1,22 +1,425 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { PROJECTS } from "@/lib/data";
 
 
-export default function Projects() {
+export default function Projects(){
 
 
-return (
+const [active,setActive]=useState(0);
+
+
+
+const nextProject=()=>{
+
+setActive((prev)=>
+
+prev === PROJECTS.length - 1
+?
+0
+:
+prev + 1
+
+);
+
+};
+
+
+
+
+
+const getIndex=(offset:number)=>{
+
+let index = active + offset;
+
+
+while(index >= PROJECTS.length){
+
+index -= PROJECTS.length;
+
+}
+
+
+return index;
+
+};
+
+
+
+
+
+
+
+
+
+function ProjectCard({
+
+index,
+position,
+activeCard=false
+
+
+}:{
+
+index:number;
+position:number;
+activeCard?:boolean;
+
+}){
+
+
+const project = PROJECTS[index];
+
+
+
+return(
+
+
+<motion.div
+
+
+
+initial={{
+
+y:position * 25,
+
+scale:1-position*0.04,
+
+opacity:activeCard ? 1 : 0.65
+
+}}
+
+
+
+animate={{
+
+y:position * 25,
+
+scale:1-position*0.04,
+
+opacity:activeCard ? 1 : 0.65
+
+}}
+
+
+
+exit={
+
+activeCard
+
+?
+
+{
+
+y:-600,
+opacity:0,
+scale:0.92,
+rotateX:-15
+
+}
+
+:
+
+undefined
+
+}
+
+
+
+transition={{
+
+duration:0.65,
+
+ease:[0.22,1,0.36,1]
+
+}}
+
+
+
+
+onClick={activeCard ? nextProject : undefined}
+
+
+
+className={`
+
+absolute
+inset-0
+
+
+rounded-tl-[60px]
+
+rounded-br-[60px]
+
+rounded-tr-none
+
+rounded-bl-none
+
+
+
+border
+
+border-white/20
+
+
+
+bg-white/[0.08]
+
+backdrop-blur-2xl
+
+
+
+p-12
+
+
+
+shadow-[0_30px_90px_rgba(0,0,0,0.45)]
+
+
+overflow-hidden
+
+
+
+${
+
+activeCard
+
+?
+
+"z-30 cursor-pointer"
+
+:
+
+"z-10"
+
+}
+
+`}
+
+
+>
+
+
+
+
+
+
+
+{/* glass shine */}
+
+
+<div
+
+className="
+absolute
+inset-0
+bg-gradient-to-br
+from-white/20
+via-transparent
+to-blue-500/20
+pointer-events-none
+"
+
+/>
+
+
+
+
+
+
+
+<div
+
+className="
+relative
+z-10
+"
+
+>
+
+
+
+
+
+
+
+{/* NUMBER BOX */}
+
+
+<div
+
+className="
+relative
+flex
+h-16
+w-16
+items-center
+justify-center
+overflow-hidden
+rounded-2xl
+border
+border-white/30
+bg-gradient-to-br
+from-blue-400/80
+to-blue-700/80
+font-bold
+text-xl
+shadow-[0_15px_40px_rgba(37,99,235,0.45)]
+"
+
+>
+
+
+{String(index+1).padStart(2,"0")}
+
+
+
+<div
+
+className="
+absolute
+inset-0
+bg-gradient-to-tr
+from-white/40
+via-transparent
+to-transparent
+"
+
+/>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<h3
+
+className="
+mt-8
+text-4xl
+font-extrabold
+text-white
+"
+
+>
+
+{project.title}
+
+</h3>
+
+
+
+
+
+
+
+
+<p
+
+className="
+mt-5
+max-w-3xl
+text-lg
+leading-8
+text-slate-300
+"
+
+>
+
+{project.description}
+
+</p>
+
+
+
+
+
+
+
+
+{/* BUTTON */}
+
+
+<button
+
+onClick={(e)=>{
+
+e.stopPropagation();
+
+}}
+
+className="
+mt-10
+rounded-xl
+border
+border-white/30
+bg-gradient-to-r
+from-blue-500/80
+to-cyan-400/70
+px-8
+py-4
+font-semibold
+text-white
+shadow-[0_15px_40px_rgba(6,182,212,0.35)]
+backdrop-blur-xl
+transition
+hover:scale-105
+"
+
+>
+
+View Project →
+
+</button>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</motion.div>
+
+
+)
+
+
+}
+
+
+
+
+
+
+
+
+
+return(
+
 
 <section
 
 id="projects"
 
 className="
-bg-[#E8F2FE]
-py-24
-dark:bg-[#050B1C]
+relative
+overflow-hidden
+bg-[#050B1C]
+py-32
+text-white
 "
 
 >
@@ -28,17 +431,24 @@ dark:bg-[#050B1C]
 
 
 
-{/* Heading */}
+
+{/* HEADER */}
 
 
 <div className="text-center">
 
 
-<p className="
-mb-3
-font-semibold
-text-[#334DAF]
-">
+<p
+
+className="
+text-sm
+uppercase
+tracking-[0.35em]
+font-bold
+text-blue-400
+"
+
+>
 
 Portfolio
 
@@ -46,14 +456,14 @@ Portfolio
 
 
 
+
+
 <h2
 
 className="
-text-4xl
+mt-5
+text-5xl
 font-extrabold
-text-[#091F5C]
-lg:text-5xl
-dark:text-white
 "
 
 >
@@ -64,13 +474,14 @@ Our Projects
 
 
 
+
+
 <p
 
 className="
-mt-4
+mt-5
 text-lg
-text-slate-600
-dark:text-slate-300
+text-slate-300
 "
 
 >
@@ -92,156 +503,75 @@ engineering and business applications.
 
 
 
-{/* Projects Grid */}
+{/* STACK */}
 
 
 <div
 
 className="
-mt-12
-grid
-gap-8
-sm:grid-cols-2
-lg:grid-cols-3
+mt-20
+relative
+mx-auto
+h-[430px]
+max-w-[1100px]
 "
+
+style={{
+
+perspective:"1200px"
+
+}}
 
 >
 
 
 
-{PROJECTS.map((project,index)=>(
+<AnimatePresence mode="popLayout">
 
 
 
-<motion.div
+<ProjectCard
 
+index={getIndex(2)}
 
-key={project.title}
+position={2}
 
-
-
-initial={{
-
-opacity:0,
-
-y:30
-
-}}
-
-
-
-whileInView={{
-
-opacity:1,
-
-y:0
-
-}}
-
-
-
-viewport={{
-
-once:true
-
-}}
-
-
-
-transition={{
-
-duration:0.5,
-
-delay:index*0.05
-
-}}
+/>
 
 
 
 
-className="
+<ProjectCard
 
-group
+index={getIndex(1)}
 
-rounded-3xl
+position={1}
 
-border
-
-border-[#D0E4FE]
-
-bg-white
-
-p-7
-
-shadow-card
-
-transition-all
-
-duration-300
-
-hover:-translate-y-2
-
-dark:border-[#334DAF]
-
-dark:bg-[#091F5C]
-
-"
-
-
-
->
+/>
 
 
 
 
 
-{/* Number */}
+
+<ProjectCard
+
+index={active}
+
+position={0}
+
+activeCard
+
+/>
 
 
-<div
 
-className="
-flex
-h-12
-w-12
-items-center
-justify-center
-rounded-xl
-bg-[#334DAF]
-font-bold
-text-white
-transition
-group-hover:bg-[#091F5C]
-"
+</AnimatePresence>
 
->
-
-{String(index+1).padStart(2,"0")}
 
 
 </div>
 
-
-
-
-
-
-
-<h3
-
-className="
-mt-6
-text-xl
-font-bold
-text-[#091F5C]
-dark:text-white
-"
-
->
-
-{project.title}
-
-</h3>
 
 
 
@@ -251,89 +581,18 @@ dark:text-white
 <p
 
 className="
-mt-3
-leading-7
-text-slate-600
-dark:text-slate-300
+mt-10
+text-center
+text-sm
+text-slate-400
 "
 
 >
 
-{project.description}
+Click the card to explore next project
 
 </p>
 
-
-
-
-
-
-<button
-
-className="
-
-mt-6
-
-rounded-xl
-
-bg-[#334DAF]
-
-px-5
-
-py-3
-
-text-sm
-
-font-semibold
-
-text-white
-
-transition
-
-hover:bg-[#091F5C]
-
-"
-
->
-
-View Details
-
-</button>
-
-
-
-
-
-
-{/* Accent line */}
-
-
-<div
-
-className="
-mt-6
-h-1
-w-10
-rounded-full
-bg-[#7096D1]
-transition-all
-group-hover:w-20
-"
-
-/>
-
-
-
-
-</motion.div>
-
-
-
-))}
-
-
-
-</div>
 
 
 

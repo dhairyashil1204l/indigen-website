@@ -1,26 +1,59 @@
+"use client";
+
 import Link from "next/link";
+import { ArrowUp } from "lucide-react";
 
 
 export default function Footer(){
 
 
-return (
+
+const scrollTop=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+
+
+
+return(
 
 
 <footer
 
 className="
-bg-[#091F5C]
+bg-[#050B1C]
 text-white
+pt-16
 "
 
 >
 
 
-<div className="
+
+<div
+
+className="
 container-x
-py-16
-">
+overflow-hidden
+rounded-t-[50px]
+border
+border-white/10
+bg-[#101F2D]
+"
+
+>
+
+
+
+
 
 
 
@@ -28,12 +61,20 @@ py-16
 
 className="
 grid
-gap-10
+gap-12
+px-10
+py-14
+
 md:grid-cols-2
+
 lg:grid-cols-4
+
 "
 
 >
+
+
+
 
 
 
@@ -42,14 +83,16 @@ lg:grid-cols-4
 {/* COMPANY */}
 
 
+
 <div>
 
 
 <h3
 
 className="
-text-2xl
+text-3xl
 font-extrabold
+tracking-wide
 "
 
 >
@@ -64,8 +107,8 @@ INDIGEN
 className="
 mt-1
 text-sm
-tracking-[0.35em]
-text-[#7096D1]
+tracking-[0.4em]
+text-cyan-400
 "
 
 >
@@ -76,11 +119,14 @@ TECHNOLOGIES
 
 
 
+
+
+
 <p
 
 className="
-mt-5
-leading-7
+mt-6
+leading-8
 text-slate-300
 "
 
@@ -88,125 +134,35 @@ text-slate-300
 
 Engineering intelligent software solutions
 for manufacturing, automation and enterprise
-transformation.
+digital transformation.
 
 </p>
 
 
-</div>
 
 
 
 
 
 
-
-{/* QUICK LINKS */}
-
-
-<div>
-
-
-<h4
+<div
 
 className="
-text-lg
-font-semibold
-"
-
->
-
-Quick Links
-
-</h4>
-
-
-
-<ul
-
-className="
-mt-5
-space-y-3
+mt-8
+space-y-4
 text-slate-300
 "
 
 >
 
 
-<li>
-
-<Link
-
-className="hover:text-[#7096D1]"
-
-href="#about"
-
->
-
-About Us
-
-</Link>
-
-</li>
 
 
 
-<li>
-
-<Link
-
-className="hover:text-[#7096D1]"
-
-href="#services"
-
->
-
-Services
-
-</Link>
-
-</li>
+</div>
 
 
 
-<li>
-
-<Link
-
-className="hover:text-[#7096D1]"
-
-href="#projects"
-
->
-
-Projects
-
-</Link>
-
-</li>
-
-
-
-
-<li>
-
-<Link
-
-className="hover:text-[#7096D1]"
-
-href="#contact"
-
->
-
-Contact
-
-</Link>
-
-</li>
-
-
-
-</ul>
 
 
 </div>
@@ -222,15 +178,14 @@ Contact
 {/* SERVICES */}
 
 
-
 <div>
 
 
 <h4
 
 className="
-text-lg
-font-semibold
+text-xl
+font-bold
 "
 
 >
@@ -241,29 +196,56 @@ Services
 
 
 
+
 <ul
 
 className="
-mt-5
-space-y-3
+mt-6
+space-y-4
 text-slate-300
 "
 
 >
 
 
-<li>Software Development</li>
+<li>
 
-<li>AI & Automation</li>
+Software Development
 
-<li>Industrial Solutions</li>
+</li>
 
-<li>Enterprise Software</li>
+
+<li>
+
+AI & Automation
+
+</li>
+
+
+<li>
+
+Industrial Solutions
+
+</li>
+
+
+<li>
+
+Enterprise Software
+
+</li>
+
+
+
+<li>
+
+Digital Transformation
+
+</li>
 
 
 
 </ul>
-
 
 
 </div>
@@ -276,7 +258,11 @@ text-slate-300
 
 
 
-{/* CONTACT */}
+
+
+
+
+{/* INDUSTRIES */}
 
 
 
@@ -286,22 +272,22 @@ text-slate-300
 <h4
 
 className="
-text-lg
-font-semibold
+text-xl
+font-bold
 "
 
 >
 
-Contact
+Industries
 
 </h4>
 
 
 
-<div
+<ul
 
 className="
-mt-5
+mt-6
 space-y-4
 text-slate-300
 "
@@ -309,40 +295,172 @@ text-slate-300
 >
 
 
-<p>
+<li>
 
-📍 Pune, Maharashtra, India
+Manufacturing
 
-</p>
-
-
-<p>
-
-✉ enquiry@indigentech.com
-
-</p>
+</li>
 
 
+<li>
 
-<p>
+Automation
 
-☎ +91 9075000427
+</li>
 
-</p>
+
+<li>
+
+Healthcare
+
+</li>
+
+
+<li>
+
+Engineering
+
+</li>
+
+
+<li>
+
+Enterprise
+
+</li>
+
+
+</ul>
 
 
 </div>
 
 
 
+
+
+
+
+
+
+
+
+
+
+{/* QUICK LINKS */}
+
+
+
+<div>
+
+
+<h4
+
+className="
+text-xl
+font-bold
+"
+
+>
+
+Quick Links
+
+</h4>
+
+
+
+
+<ul
+
+className="
+mt-6
+space-y-4
+text-slate-300
+"
+
+>
+
+
+<li>
+
+<Link href="#about">
+
+About Us
+
+</Link>
+
+</li>
+
+
+
+
+<li>
+
+<Link href="#services">
+
+Services
+
+</Link>
+
+</li>
+
+
+
+
+
+<li>
+
+<Link href="#projects">
+
+Projects
+
+</Link>
+
+</li>
+
+
+
+
+
+<li>
+
+<Link href="#blogs">
+
+Blogs
+
+</Link>
+
+</li>
+
+
+
+
+
+<li>
+
+<Link href="#contact">
+
+Contact Us
+
+</Link>
+
+</li>
+
+
+
+</ul>
+
+
 </div>
 
 
 
 
 
-</div>
 
+
+
+</div>
 
 
 
@@ -355,14 +473,16 @@ text-slate-300
 {/* MAP */}
 
 
+
 <div
 
 className="
-mt-12
+mx-10
+mb-10
 overflow-hidden
 rounded-3xl
 border
-border-[#334DAF]
+border-white/10
 "
 
 >
@@ -376,32 +496,87 @@ src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2580295033003!2d
 
 width="100%"
 
-height="350"
+height="300"
 
 loading="lazy"
 
 className="
-w-full
 border-0
 "
 
-
-allowFullScreen
-
-
-referrerPolicy="strict-origin-when-cross-origin"
-
-
 />
 
-
 </div>
 
 
 
 
 
+
+
+
+
+{/* SOCIAL BAR */}
+
+
+
+<div
+
+className="
+mx-10
+mb-8
+rounded-2xl
+border
+border-white/10
+px-8
+py-6
+
+flex
+
+flex-wrap
+
+justify-between
+
+gap-5
+
+text-slate-300
+
+"
+
+>
+
+
+<span>
+
+in LinkedIn
+
+</span>
+
+
+<span>
+
+◎ Instagram
+
+</span>
+
+
+<span>
+
+𝕏 Twitter
+
+</span>
+
+
+<span>
+
+f Facebook
+
+</span>
+
+
+
 </div>
+
 
 
 
@@ -418,17 +593,46 @@ referrerPolicy="strict-origin-when-cross-origin"
 
 className="
 border-t
-border-white/20
-py-5
-text-center
+border-white/10
+px-10
+py-6
+
+flex
+
+flex-col
+
+gap-4
+
+md:flex-row
+
+justify-between
+
 text-sm
-text-slate-300
+
+text-slate-400
+
 "
 
 >
 
 
+<p>
+
 © 2026 Indigen Technologies. All Rights Reserved.
+
+</p>
+
+
+
+
+
+<p>
+
+Privacy Policy | Terms & Conditions
+
+</p>
+
+
 
 
 </div>
@@ -437,10 +641,67 @@ text-slate-300
 
 
 
+
+</div>
+
+
+
+
+
+
+
+
+
+{/* BACK TO TOP */}
+
+
+
+<button
+
+onClick={scrollTop}
+
+className="
+fixed
+bottom-8
+right-8
+
+flex
+h-16
+w-16
+items-center
+justify-center
+
+rounded-full
+
+bg-blue-600
+
+text-white
+
+shadow-xl
+
+transition
+
+hover:scale-110
+
+"
+
+>
+
+
+<ArrowUp size={28}/>
+
+
+</button>
+
+
+
+
+
+
+
 </footer>
 
 
-);
-
+)
 
 }

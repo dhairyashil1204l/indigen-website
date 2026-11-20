@@ -1,8 +1,10 @@
-import SectionHeading from "./SectionHeading";
+"use client";
+
+import { motion } from "framer-motion";
 import { INDUSTRIES } from "@/lib/data";
 
 
-export default function Industries() {
+export default function Industries(){
 
 
 return (
@@ -12,109 +14,193 @@ return (
 id="industries"
 
 className="
-bg-[#F9FBFF]
-py-20
-md:py-24
-dark:bg-[#050B1C]
+relative
+overflow-hidden
+bg-gradient-to-b
+from-[#07152F]
+to-[#050B1C]
+py-24
+text-white
 "
 
 >
 
 
-<div className="container-x">
+{/* GRID */}
 
+<div
 
-
-<SectionHeading
-
-id="industries-heading"
-
-title="Industries We Serve"
-
-lead="Delivering software solutions across multiple industrial sectors with engineering expertise and innovation."
+className="
+absolute
+inset-0
+opacity-[0.05]
+bg-[linear-gradient(#3b82f6_1px,transparent_1px),linear-gradient(90deg,#3b82f6_1px,transparent_1px)]
+bg-[size:40px_40px]
+"
 
 />
 
 
 
+<div className="container-x relative z-10">
+
+
+
+{/* Heading */}
+
+
+<div className="max-w-3xl">
+
+
+<p
+
+className="
+text-l
+font-bold
+uppercase
+tracking-[0.35em]
+text-blue-400
+"
+
+>
+
+Industries
+
+</p>
+
+
+
+<h2
+
+className="
+mt-5
+text-5xl
+font-extrabold
+"
+
+>
+
+Industries We Serve
+
+</h2>
+
+
+
+<p
+
+className="
+mt-5
+text-lg
+leading-8
+text-slate-300
+"
+
+>
+
+We deliver intelligent software solutions and
+automation systems designed for diverse
+industrial sectors.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+{/* Cards */}
 
 
 <div
 
 className="
-mt-10
+mt-14
 grid
 gap-6
-sm:grid-cols-2
+md:grid-cols-2
 lg:grid-cols-3
 "
 
 >
 
 
+{
+INDUSTRIES.map((industry,index)=>(
 
-{INDUSTRIES.map((industry)=>(
 
-
-
-<div
+<motion.div
 
 
 key={industry.title}
 
 
+initial={{
+opacity:0,
+y:30
+}}
+
+
+whileInView={{
+opacity:1,
+y:0
+}}
+
+
+viewport={{
+once:true
+}}
+
 className="
-
 group
-
-rounded-2xl
-
+relative
+overflow-hidden
+rounded-3xl
 border
-
-border-[#D0E4FE]
-
-bg-white
-
-p-6
-
+border-white/10
+bg-white/[0.06]
+p-8
+backdrop-blur-xl
 transition-all
-
 duration-300
-
 hover:-translate-y-2
+hover:border-blue-400/40
+hover:bg-white/[0.08]
+hover:shadow-[0_10px_30px_rgba(37,99,235,0.15)]
+"
+>
 
-hover:shadow-card
 
-dark:border-[#334DAF]
+<div
 
-dark:bg-[#091F5C]
-
+className="
+flex
+h-12
+w-12
+items-center
+justify-center
+rounded-xl
+bg-blue-500/20
+text-xl
+text-blue-300
 "
 
-
-
 >
+
+0{index+1}
+
+</div>
 
 
 
 <h3
 
 className="
-
-text-xl
-
+mt-6
+text-2xl
 font-bold
-
-text-[#091F5C]
-
-transition
-
-group-hover:text-[#334DAF]
-
-dark:text-white
-
-dark:group-hover:text-[#7096D1]
-
 "
 
 >
@@ -125,20 +211,12 @@ dark:group-hover:text-[#7096D1]
 
 
 
-
-
 <p
 
 className="
-
 mt-3
-
 leading-7
-
-text-slate-600
-
-dark:text-slate-300
-
+text-slate-300
 "
 
 >
@@ -149,47 +227,53 @@ dark:text-slate-300
 
 
 
+</motion.div>
+
+
+))
+
+}
+
+
+
+</div>
+
+
+</div>
+
+{/* PREMIUM SECTION TRANSITION */}
+
+<div
+className="
+absolute
+bottom-0
+left-0
+w-full
+h-48
+bg-gradient-to-b
+from-transparent
+via-[#07152F]
+to-[#07152F]
+pointer-events-none
+"
+/>
 
 
 <div
 
 className="
-
-mt-5
-
-h-1
-
-w-12
-
+absolute
+bottom-[-100px]
+left-1/2
+-translate-x-1/2
+w-[800px]
+h-[220px]
 rounded-full
-
-bg-[#334DAF]
-
-transition-all
-
-group-hover:w-20
-
+bg-blue-500/20
+blur-[140px]
 "
 
 ></div>
-
-
-
-</div>
-
-
-
-))}
-
-
-
-</div>
-
-
-
-</div>
-
-
 </section>
 
 

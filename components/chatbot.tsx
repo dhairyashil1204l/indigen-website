@@ -1,327 +1,613 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { MessageCircle, X, Send } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 
 interface Message {
 
-  role: "user" | "assistant";
+role:"user" | "assistant";
 
-  content: string;
+content:string;
 
-  lead?: {
+lead?:{
 
-    name?: string;
+name?:string;
 
-    company?: string;
+company?:string;
 
-    email?: string;
+email?:string;
 
-    phone?: string;
+phone?:string;
 
-    requirement?: string;
+requirement?:string;
 
-  };
+};
 
 }
 
 
 
-export default function Chatbot() {
+export default function Chatbot(){
 
 
-  const [open, setOpen] = useState(false);
+const [open,setOpen]=useState(false);
 
-  const [loading, setLoading] = useState(false);
+const [loading,setLoading]=useState(false);
 
-  const [input, setInput] = useState("");
+const [input,setInput]=useState("");
 
+const messagesEndRef=useRef<HTMLDivElement>(null);
 
-  const messagesEndRef = useRef<HTMLDivElement>(null);
 
 
 
-  const [messages, setMessages] = useState<Message[]>([
 
-    {
+const [messages,setMessages]=useState<Message[]>([
 
-      role:"assistant",
+{
 
-      content:
-      "Welcome to Indigen Technologies.\n\nHow can I help you today?"
+role:"assistant",
 
-    }
+content:
+"Welcome to Indigen Technologies. 👋\n\nHow can I help you today?"
 
-  ]);
+}
 
+]);
 
 
 
 
-  useEffect(()=>{
 
-    messagesEndRef.current?.scrollIntoView({
 
-      behavior:"smooth"
 
-    });
+useEffect(()=>{
 
+messagesEndRef.current?.scrollIntoView({
 
-  },[messages,loading]);
+behavior:"smooth"
 
+});
 
+},[messages,loading]);
 
 
 
 
 
-  const sendMessage = async () => {
 
 
-    if(!input.trim() || loading) return;
+const sendMessage=async()=>{
 
 
+if(!input.trim() || loading) return;
 
-    const userText = input;
 
 
+const userText=input;
 
-    const userMessage:Message = {
 
-      role:"user",
 
-      content:userText
+setMessages(prev=>[
 
-    };
+...prev,
 
+{
 
+role:"user",
 
-    setMessages((prev)=>[
+content:userText
 
-      ...prev,
+}
 
-      userMessage
+]);
 
-    ]);
 
 
+setInput("");
 
-    setInput("");
+setLoading(true);
 
-    setLoading(true);
 
 
 
-    try{
 
+try{
 
-      const res = await fetch("/api/chatbot",{
 
+const res=await fetch("/api/chatbot",{
 
-        method:"POST",
+method:"POST",
 
+headers:{
 
-        headers:{
+"Content-Type":"application/json"
 
-          "Content-Type":"application/json"
+},
 
-        },
+body:JSON.stringify({
 
+message:userText,
 
-        body:JSON.stringify({
+history:messages
 
+})
 
-          message:userText,
+});
 
 
-          history:messages
 
 
-        })
 
+const data=await res.json();
 
-      });
 
 
 
 
+if(!res.ok){
 
-      const data = await res.json();
+throw new Error(data.error);
 
+}
 
 
 
-      if(!res.ok){
 
-        throw new Error(
 
-          data.error || "Something went wrong"
+setMessages(prev=>[
 
-        );
+...prev,
 
-      }
+{
 
+role:"assistant",
 
+content:data.reply,
 
+lead:data.lead
 
+}
 
-      const assistantMessage:Message = {
+]);
 
 
-        role:"assistant",
 
 
-        content:data.reply,
+}
 
+catch{
 
-        lead:data.lead
 
+setMessages(prev=>[
 
-      };
+...prev,
 
+{
 
+role:"assistant",
 
+content:"Sorry, I am unable to respond right now."
 
-      setMessages((prev)=>[
+}
 
+]);
 
-        ...prev,
 
+}
 
-        assistantMessage
 
+finally{
 
-      ]);
+setLoading(false);
 
+}
 
 
-    }
+};
 
 
-    catch(error){
 
 
-      setMessages((prev)=>[
 
 
-        ...prev,
 
 
-        {
 
-          role:"assistant",
-
-          content:
-          "Sorry, I am unable to respond right now. Please try again."
-
-        }
-
-
-      ]);
-
-
-    }
-
-
-    finally{
-
-
-      setLoading(false);
-
-
-    }
-
-
-  };
-
-
-
-
-
-
-
-return (
+return(
 
 <>
 
 
-<button
+
+
+
+{/* FLOATING BUTTON */}
+
+
+<motion.button
+
+
+whileHover={{
+
+scale:1.1
+
+}}
+
+
+whileTap={{
+
+scale:0.95
+
+}}
+
+
 
 onClick={()=>setOpen(!open)}
 
+
 className="
+
 fixed
-bottom-6
-right-6
-h-16
-w-16
-rounded-full
-bg-red-600
-text-white
-text-2xl
-shadow-xl
-hover:bg-red-700
-transition
+
+bottom-8
+
+right-8
+
 z-50
-"
-
->
-
-{open ? "✕" : "🤖"}
-
-</button>
 
 
-
-
-
-{open && (
-
-
-<div
-
-className="
-fixed
-bottom-24
-right-4
-sm:right-6
-w-[calc(100%-32px)]
-sm:w-[360px]
-h-[550px]
-bg-white
-rounded-2xl
-shadow-2xl
-border
 flex
-flex-col
+
+h-16
+
+w-16
+
+items-center
+
+justify-center
+
+
+
+rounded-full
+
+
+
+bg-gradient-to-br
+
+from-blue-400
+
+via-blue-600
+
+to-blue-800
+
+
+
+border
+
+border-white/30
+
+
+
+shadow-[0_15px_45px_rgba(37,99,235,0.55)]
+
+
+
+text-white
+
+
 overflow-hidden
-z-50
+
 "
 
 >
+
+
+{/* glossy shine */}
 
 
 <div
 
 className="
-bg-red-600
-text-white
-p-4
+
+absolute
+
+top-0
+
+left-0
+
+h-1/2
+
+w-full
+
+bg-gradient-to-b
+
+from-white/50
+
+to-transparent
+
+"
+
+/>
+
+
+
+<div className="relative">
+
+
+{
+
+open
+
+?
+
+<X size={28}/>
+
+:
+
+<MessageCircle size={30}/>
+
+}
+
+
+</div>
+
+
+
+</motion.button>
+
+
+
+
+
+
+
+
+
+<AnimatePresence>
+
+
+{
+
+open &&
+
+<motion.div
+
+
+initial={{
+
+opacity:0,
+
+y:40,
+
+scale:0.9
+
+}}
+
+
+
+animate={{
+
+opacity:1,
+
+y:0,
+
+scale:1
+
+}}
+
+
+
+exit={{
+
+opacity:0,
+
+y:40,
+
+scale:0.9
+
+}}
+
+
+
+transition={{
+
+duration:0.25
+
+}}
+
+
+
+className="
+
+fixed
+
+bottom-28
+
+right-6
+
+z-50
+
+
+w-[calc(100%-48px)]
+
+sm:w-[390px]
+
+
+h-[560px]
+
+
+rounded-3xl
+
+
+overflow-hidden
+
+
+
+border
+
+border-blue-300/30
+
+
+
+bg-[#071426]/95
+
+
+
+backdrop-blur-2xl
+
+
+
+shadow-[0_30px_100px_rgba(37,99,235,0.35)]
+
+
+
+flex
+
+flex-col
+
 "
 
 >
 
 
-<h3 className="font-bold">
+
+
+
+
+
+
+
+{/* HEADER */}
+
+
+
+<div
+
+className="
+
+relative
+
+overflow-hidden
+
+px-6
+
+py-5
+
+
+
+bg-gradient-to-r
+
+from-[#2563EB]
+
+to-[#06B6D4]
+
+text-white
+
+"
+
+>
+
+
+{/* shine */}
+
+
+<div
+
+className="
+
+absolute
+
+inset-0
+
+bg-gradient-to-br
+
+from-white/40
+
+via-transparent
+
+to-transparent
+
+"
+
+/>
+
+
+
+
+<div className="relative flex items-center gap-3">
+
+
+<div
+
+className="
+
+h-11
+
+w-11
+
+rounded-full
+
+bg-white/20
+
+border
+
+border-white/30
+
+flex
+
+items-center
+
+justify-center
+
+backdrop-blur-xl
+
+"
+
+>
+
+🤖
+
+</div>
+
+
+
+<div>
+
+
+<h3
+
+className="
+
+font-bold
+
+text-lg
+
+"
+
+>
 
 Indigen AI Assistant
 
 </h3>
 
 
-<p className="text-xs">
 
-Online
+<p
+
+className="
+
+text-xs
+
+text-blue-100
+
+"
+
+>
+
+● Online
 
 </p>
 
@@ -329,40 +615,105 @@ Online
 </div>
 
 
+</div>
 
+
+</div>
+
+
+
+
+
+
+
+
+
+{/* CHAT AREA */}
 
 
 
 <div
 
 className="
+
 flex-1
+
 overflow-y-auto
-p-4
+
+p-5
+
 space-y-4
-bg-slate-50
+
 "
 
 >
 
 
-{messages.map((msg,index)=>(
+{
+
+messages.map((msg,index)=>(
 
 
 <div
 
 key={index}
 
-className={`max-w-[85%] rounded-xl px-4 py-3 text-sm whitespace-pre-wrap ${
+className={`flex ${
 msg.role==="user"
 ?
-"ml-auto bg-red-600 text-white"
+"justify-end"
 :
-"bg-white border text-gray-800"
+"justify-start"
 }`}
 
 >
 
+
+<div
+
+
+className={`
+
+max-w-[85%]
+
+rounded-2xl
+
+px-4
+
+py-3
+
+text-sm
+
+leading-6
+
+whitespace-pre-wrap
+
+
+
+border
+
+
+
+${
+msg.role==="user"
+
+
+?
+
+"bg-gradient-to-r from-blue-600 to-cyan-500 text-white border-blue-400/30 rounded-br-sm shadow-lg"
+
+
+:
+
+
+"bg-white/10 text-slate-100 border-white/10 rounded-bl-sm backdrop-blur-xl"
+
+
+}
+
+`}
+
+>
 
 {msg.content}
 
@@ -370,24 +721,44 @@ msg.role==="user"
 </div>
 
 
-))}
+</div>
+
+
+))
+
+
+}
 
 
 
 
 
-{loading && (
+{
+
+loading &&
 
 <div
 
 className="
-bg-white
-border
-rounded-xl
-px-4
-py-3
-text-sm
+
 w-fit
+
+rounded-2xl
+
+bg-blue-500/10
+
+border
+
+border-blue-400/20
+
+px-4
+
+py-3
+
+text-sm
+
+text-blue-200
+
 "
 
 >
@@ -396,12 +767,14 @@ Thinking...
 
 </div>
 
-)}
+}
+
 
 
 
 
 <div ref={messagesEndRef}/>
+
 
 
 </div>
@@ -411,13 +784,27 @@ Thinking...
 
 
 
+
+
+
+{/* INPUT */}
+
+
+
 <div
 
 className="
-p-4
+
 border-t
+
+border-white/10
+
+p-4
+
 flex
-gap-2
+
+gap-3
+
 "
 
 >
@@ -432,17 +819,15 @@ value={input}
 onChange={(e)=>setInput(e.target.value)}
 
 
+
 onKeyDown={(e)=>{
 
 
 if(e.key==="Enter" && !e.shiftKey){
 
-
 e.preventDefault();
 
-
 sendMessage();
-
 
 }
 
@@ -453,20 +838,48 @@ sendMessage();
 
 placeholder="Type your message..."
 
-
 className="
+
 flex-1
-border
-rounded-xl
-px-4
-py-3
+
+h-12
+
 resize-none
+
+
+rounded-xl
+
+
+bg-white/10
+
+
+border
+
+border-white/20
+
+
+px-4
+
+py-3
+
+
+text-white
+
+
 outline-none
+
+
+placeholder:text-slate-400
+
+
+focus:border-cyan-400
+
 "
 
-
-
 />
+
+
+
 
 
 
@@ -476,39 +889,102 @@ outline-none
 
 onClick={sendMessage}
 
-
 disabled={loading}
 
 
 className="
-px-5
-rounded-xl
-bg-red-600
-text-white
-disabled:opacity-50
-"
 
+relative
+
+overflow-hidden
+
+
+h-12
+
+w-12
+
+
+rounded-xl
+
+
+
+bg-gradient-to-br
+
+from-blue-500
+
+to-cyan-400
+
+
+
+text-white
+
+
+flex
+
+items-center
+
+justify-center
+
+
+
+shadow-[0_10px_30px_rgba(6,182,212,0.45)]
+
+"
 
 >
 
-Send
+
+<div
+
+className="
+
+absolute
+
+top-0
+
+left-0
+
+h-1/2
+
+w-full
+
+bg-white/30
+
+"
+
+/>
+
+
+
+<Send size={20}/>
+
 
 </button>
 
 
+
+
 </div>
 
 
 
-</div>
 
 
-)}
+
+
+</motion.div>
+
+
+}
+
+
+
+</AnimatePresence>
+
 
 
 </>
 
-);
-
+)
 
 }

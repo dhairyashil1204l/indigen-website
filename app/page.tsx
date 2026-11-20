@@ -4,7 +4,7 @@ import About from "@/components/About";
 import Services from "@/components/Services";
 import Industries from "@/components/Industries";
 import Solutions from "@/components/Solutions";
-import Technologies from "@/components/Technology";
+
 import Projects from "@/components/Projects";
 import Blogs from "@/components/Blog";
 import Contact from "@/components/contact";
@@ -43,8 +43,7 @@ export default function Home() {
       <Solutions />
 
 
-      {/* Technologies */}
-      <Technologies />
+  
 
 
       {/* Projects */}

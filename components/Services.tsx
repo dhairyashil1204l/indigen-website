@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { SERVICES } from "@/lib/data";
 
 
@@ -13,38 +13,59 @@ const [active,setActive] = useState<number | null>(null);
 
 
 return (
-
-
+    
 <section
 
 id="services"
 
 className="
-bg-surface
+relative
+overflow-hidden
+bg-gradient-to-b
+from-[#07152F]
+via-[#0A2454]
+to-[#07152F]
 py-24
-dark:bg-[#050B1C]
+text-white
 "
 
 >
 
 
-<div className="container-x">
+{/* TECH GRID BACKGROUND */}
+
+<div
+className="
+absolute
+inset-0
+opacity-[0.05]
+bg-[linear-gradient(#3b82f6_1px,transparent_1px),linear-gradient(90deg,#3b82f6_1px,transparent_1px)]
+bg-[size:40px_40px]
+"
+/>
 
 
+
+<div className="container-x relative z-10">
 
 
 
 {/* Heading */}
 
+<div className="max-w-4xl">
 
-<div className="text-center">
 
+<p
 
-<p className="
-mb-3
-font-semibold
-text-brand
-">
+className="
+text-sm
+font-bold
+uppercase
+tracking-[0.35em]
+text-blue-300
+"
+
+>
 
 Our Expertise
 
@@ -53,38 +74,30 @@ Our Expertise
 
 
 <h2
-
 className="
-text-4xl
+mt-5
+text-5xl
 font-extrabold
-text-brand-dark
-lg:text-5xl
-dark:text-white
 "
-
 >
-
 Our Services
-
 </h2>
 
 
 
 <p
-
 className="
-mt-4
+mt-5
 text-lg
-text-slate-600
-dark:text-slate-300
+leading-8
+text-slate-300
 "
-
 >
 
-Software solutions and engineering services for industrial transformation.
+Software solutions and engineering services
+for industrial transformation.
 
 </p>
-
 
 
 </div>
@@ -95,157 +108,102 @@ Software solutions and engineering services for industrial transformation.
 
 
 
-{/* Service Cards */}
-
-
+{/* SERVICES */}
 
 <div
 
 className="
-mt-12
-grid
-gap-8
-md:grid-cols-2
+mt-14
+space-y-6
 "
 
 >
 
 
-
-{SERVICES.map((service,index)=>(
-
+{
+SERVICES.map((service,index)=>(
 
 
 <motion.div
 
-
 key={service.title}
 
 
-
 initial={{
-
 opacity:0,
-
 y:30
-
 }}
-
 
 
 whileInView={{
-
 opacity:1,
-
 y:0
-
 }}
-
 
 
 viewport={{
-
 once:true
-
 }}
-
-
-
-transition={{
-
-duration:0.5
-
-}}
-
 
 
 className="
-
+group
+relative
+overflow-hidden
 rounded-3xl
-
 border
-
-border-[#D0E4FE]
-
-bg-white
-
-p-8
-
-shadow-card
-
-transition
-
+border-white/15
+bg-white/[0.08]
+backdrop-blur-2xl
+px-8
+py-6
+shadow-[0_20px_50px_rgba(0,0,0,0.25)]
+transition-all
+duration-500
 hover:-translate-y-2
-
-dark:border-[#334DAF]
-
-dark:bg-[#091F5C]
-
+hover:border-blue-400/50
+hover:bg-white/[0.12]
+hover:shadow-[0_0_45px_rgba(59,130,246,0.25)]
 "
-
-
 
 >
 
+
+
+{/* HEADER */}
 
 
 <button
 
-
-onClick={()=>
-
-
-setActive(
-
-active===index
-
-?
-
-null
-
-:
-
-index
-
-)
-
-
-}
-
-
+onClick={()=>setActive(
+active === index ? null : index
+)}
 
 className="
-
+group
 flex
-
 w-full
-
 items-center
-
 justify-between
-
+p-7
 text-left
-
 "
 
-
-
 >
+
+
+<div>
+
+
 
 
 
 <h3
 
 className="
-
-text-2xl
-
+mt-3
+text-3xl
 font-bold
-
-text-brand-dark
-
-dark:text-white
-
 "
 
 >
@@ -255,22 +213,37 @@ dark:text-white
 </h3>
 
 
+</div>
+
+
+
+
 
 <span
 
 className="
-
-text-3xl
-
-font-light
-
-text-brand
-
+flex
+h-11
+w-11
+items-center
+justify-center
+rounded-full
+border
+border-blue-300/30
+bg-white/10
+backdrop-blur-xl
+text-2xl
+text-blue-300
+transition
+duration-300
+group-hover:bg-blue-500/20
 "
 
 >
 
-{active===index ? "-" : "+"}
+{
+active === index ? "−" : "+"
+}
 
 </span>
 
@@ -284,53 +257,75 @@ text-brand
 
 
 
-{/* Sub Services */}
+
+{/* EXPAND AREA */}
 
 
+<AnimatePresence>
 
-{active===index && (
 
+{
+active === index && (
 
 
 <motion.div
 
 
 initial={{
-
-opacity:0,
-
-height:0
-
+height:0,
+opacity:0
 }}
 
 
-
 animate={{
+height:"auto",
+opacity:1
+}}
 
-opacity:1,
 
-height:"auto"
+exit={{
+height:0,
+opacity:0
+}}
 
+
+transition={{
+duration:0.4
 }}
 
 
 
 className="
-
-mt-8
-
-space-y-5
-
+overflow-hidden
 "
-
-
 
 >
 
 
+<div
 
-{service.items.map((item)=>(
+className="
+border-t
+border-white/10
+p-8
+"
 
+>
+
+
+<div
+
+className="
+grid
+gap-6
+md:grid-cols-2
+"
+
+>
+
+
+{
+service.items.map((item)=>(
 
 
 <div
@@ -338,21 +333,19 @@ space-y-5
 key={item.title}
 
 className="
-
+group
 rounded-2xl
-
 border
-
-border-[#D0E4FE]
-
-bg-[#F9FBFF]
-
-p-6
-
-dark:border-[#334DAF]
-
-dark:bg-[#102A63]
-
+border-white/10
+bg-white/[0.05]
+backdrop-blur-xl
+p-7
+transition-all
+duration-300
+hover:-translate-y-1
+hover:border-blue-400/50
+hover:bg-white/[0.1]
+hover:shadow-[0_0_30px_rgba(59,130,246,0.18)]
 "
 
 >
@@ -362,15 +355,8 @@ dark:bg-[#102A63]
 <h4
 
 className="
-
 text-xl
-
 font-bold
-
-text-brand-dark
-
-dark:text-white
-
 "
 
 >
@@ -382,19 +368,12 @@ dark:text-white
 
 
 
-
 <p
 
 className="
-
 mt-3
-
 leading-7
-
-text-slate-600
-
-dark:text-slate-300
-
+text-slate-300
 "
 
 >
@@ -409,48 +388,77 @@ dark:text-slate-300
 
 
 
-{item.features.length > 0 && (
+{
+item.features.length > 0 && (
 
 
 <ul
 
 className="
-
-mt-4
-
-list-disc
-
-space-y-2
-
-pl-5
-
-text-slate-600
-
-dark:text-slate-300
-
+mt-5
+space-y-3
 "
 
 >
 
 
-{item.features.map((feature)=>(
+{
+item.features.map((feature)=>(
 
 
-<li key={feature}>
+<li
+
+key={feature}
+
+className="
+flex
+items-start
+gap-3
+text-sm
+text-slate-300
+"
+
+>
+
+
+<span
+
+className="
+mt-1
+flex
+h-5
+w-5
+items-center
+justify-center
+rounded-full
+bg-blue-500/20
+text-xs
+text-blue-400
+"
+
+>
+✓
+</span>
+
+
 
 {feature}
+
 
 </li>
 
 
-))}
+))
+
+}
 
 
 </ul>
 
 
-)}
+)
 
+}
 
 
 
@@ -465,34 +473,22 @@ href={item.pdf}
 target="_blank"
 
 className="
-
-mt-5
-
+mt-7
 inline-flex
-
-rounded-xl
-
-bg-brand
-
+rounded-full
+bg-blue-500/10
 px-5
-
-py-3
-
+py-2.5
 text-sm
-
 font-semibold
-
-text-white
-
+text-blue-400
 transition
-
-hover:bg-brand-dark
-
+hover:bg-blue-500/20
 "
 
 >
 
-View Project Details
+View Solution Details →
 
 </a>
 
@@ -501,27 +497,45 @@ View Project Details
 </div>
 
 
+))
 
-))}
+
+}
+
+
+</div>
+
+
+</div>
 
 
 
 </motion.div>
 
 
-)}
+)
+
+}
+
+
+</AnimatePresence>
+
 
 
 
 </motion.div>
 
 
+))
 
-))}
+
+}
 
 
 
 </div>
+
+
 
 
 
@@ -532,6 +546,5 @@ View Project Details
 
 
 );
-
 
 }

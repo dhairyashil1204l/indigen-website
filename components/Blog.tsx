@@ -1,22 +1,22 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { BLOGS } from "@/lib/data";
+import Link from "next/link";
+import { BLOGS } from "@/lib/blogs";
 
 
-export default function Blog() {
+export default function BlogSection(){
 
 
-return (
+return(
 
 <section
 
 id="blogs"
 
 className="
-bg-white
-py-24
-dark:bg-[#050B1C]
+bg-[#050B1C]
+py-28
+text-white
 "
 
 >
@@ -26,20 +26,19 @@ dark:bg-[#050B1C]
 
 
 
-
-
 {/* Heading */}
 
 
-<div className="text-center">
+<div className="text-center mb-16">
 
 
 <p
 
 className="
-mb-3
+text-blue-400
 font-semibold
-text-[#334DAF]
+uppercase
+tracking-widest
 "
 
 >
@@ -53,36 +52,78 @@ Insights
 <h2
 
 className="
-text-4xl
+mt-4
+text-5xl
 font-extrabold
-text-[#091F5C]
-lg:text-5xl
-dark:text-white
 "
 
 >
 
-Our Blog
+Latest Blogs
 
 </h2>
-
-
 
 
 <p
 
 className="
 mt-4
-text-lg
-text-slate-600
-dark:text-slate-300
+text-slate-300
 "
 
 >
 
-Insights, innovations and knowledge about industrial software and technology.
+Explore our latest technology insights and industry updates.
 
 </p>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div
+
+className="
+grid
+gap-6
+
+lg:grid-cols-3
+"
+
+>
+
+
+
+
+
+{/* LEFT */}
+
+<div className="flex flex-col gap-6">
+
+
+
+<BlogCard
+
+blog={BLOGS[0]}
+
+large
+
+/>
+
+
+
+<BlogCard
+
+blog={BLOGS[1]}
+
+/>
 
 
 
@@ -95,141 +136,188 @@ Insights, innovations and knowledge about industrial software and technology.
 
 
 
-{/* Blog Cards */}
+
+{/* CENTER FEATURE */}
+
+
+
+<BlogCard
+
+blog={BLOGS[2]}
+
+large
+
+featured
+
+/>
+
+
+
+
+
+
+
+
+
+{/* RIGHT */}
+
+
+<div className="flex flex-col gap-6">
+
+
+<BlogCard
+
+blog={BLOGS[3]}
+
+/>
+
+
+
+<BlogCard
+
+blog={BLOGS[4]}
+
+large
+
+/>
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+</section>
+
+)
+
+}
+
+
+
+
+
+
+
+
+function BlogCard({
+
+blog,
+large=false,
+featured=false
+
+}:any){
+
+
+return(
+
+<Link
+
+href={`/blogs/${blog.slug}`}
+
+className={`
+group
+relative
+overflow-hidden
+
+rounded-3xl
+
+border
+border-white/20
+
+bg-white/10
+
+backdrop-blur-xl
+
+block
+
+
+${large?"h-[420px]":"h-[190px]"}
+
+${featured?"h-[610px]":""}
+
+`}
+
+>
+
+
+<img
+
+src={blog.image}
+
+alt={blog.title}
+
+className="
+absolute
+inset-0
+
+h-full
+w-full
+
+object-cover
+
+transition
+duration-700
+
+group-hover:scale-110
+
+"
+
+/>
+
+
 
 
 
 <div
 
 className="
-mt-12
-grid
-gap-8
-md:grid-cols-2
-lg:grid-cols-3
+absolute
+inset-0
+bg-gradient-to-t
+from-black
+via-black/50
+to-transparent
 "
 
->
+/>
 
 
 
-{BLOGS.map((blog,index)=>(
 
 
-
-<motion.article
-
-
-
-key={blog.title}
-
-
-
-initial={{
-
-opacity:0,
-
-y:30
-
-}}
-
-
-
-whileInView={{
-
-opacity:1,
-
-y:0
-
-}}
-
-
-
-viewport={{
-
-once:true
-
-}}
-
-
-
-transition={{
-
-duration:0.5,
-
-delay:index*0.1
-
-}}
-
-
-
+<div
 
 className="
-
-group
-
-rounded-3xl
-
-border
-
-border-[#D0E4FE]
-
-bg-[#F9FBFF]
-
+absolute
+bottom-0
 p-7
-
-transition-all
-
-duration-300
-
-hover:-translate-y-2
-
-hover:shadow-card
-
-dark:border-[#334DAF]
-
-dark:bg-[#091F5C]
-
 "
 
-
-
-
-
 >
-
-
-
-
-
-
-{/* Category */}
 
 
 <span
 
 className="
-
-inline-flex
-
-rounded-full
-
-bg-[#E8F2FE]
-
-px-4
-
-py-1.5
-
 text-sm
-
+text-cyan-300
 font-semibold
-
-text-[#334DAF]
-
-dark:bg-[#102A63]
-
-dark:text-[#D0E4FE]
-
 "
 
 >
@@ -241,25 +329,12 @@ dark:text-[#D0E4FE]
 
 
 
-
-
-
-
-
 <h3
 
 className="
-
-mt-5
-
-text-xl
-
+mt-3
+text-2xl
 font-bold
-
-text-[#091F5C]
-
-dark:text-white
-
 "
 
 >
@@ -271,21 +346,12 @@ dark:text-white
 
 
 
-
-
-
 <p
 
 className="
-
 mt-3
-
-leading-7
-
-text-slate-600
-
-dark:text-slate-300
-
+text-sm
+text-slate-300
 "
 
 >
@@ -298,63 +364,20 @@ dark:text-slate-300
 
 
 
-
-
-
-<button
+<div
 
 className="
-
-mt-6
-
-text-sm
-
+mt-5
 font-semibold
-
-text-[#334DAF]
-
-transition
-
-hover:text-[#091F5C]
-
-dark:text-[#7096D1]
-
+text-blue-400
 "
 
 >
 
 Read More →
 
-</button>
+</div>
 
-
-
-
-
-
-
-<div
-
-className="
-mt-6
-h-1
-w-10
-rounded-full
-bg-[#7096D1]
-transition-all
-group-hover:w-20
-"
-
-/>
-
-
-
-
-</motion.article>
-
-
-
-))}
 
 
 
@@ -364,13 +387,9 @@ group-hover:w-20
 
 
 
-
-</div>
-
-
-</section>
+</Link>
 
 
-);
+)
 
 }

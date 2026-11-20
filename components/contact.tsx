@@ -3,56 +3,32 @@
 import { useState } from "react";
 
 
-const servicesList = [
-"Software Development",
-"AI Chatbot & Automation",
-"SaaS Solutions",
-"Website Development",
-"Mobile App Development",
-"Industrial Automation",
-"Power BI Dashboard",
-"Digital Transformation",
-"Cloud Solutions",
-"SEO & Digital Marketing",
-];
-
-
-const timelineList=[
-"ASAP",
-"Within 1 Month",
-"1-3 Months",
-"Flexible",
-];
-
-
-
 export default function Contact(){
 
 
-const [formData,setFormData]=useState({
+const [loading,setLoading]=useState(false);
+
+
+
+const [form,setForm]=useState({
 
 name:"",
 company:"",
 email:"",
 phone:"",
-services:[] as string[],
-budget:"",
-timeline:"",
 message:""
 
 });
 
-
-const [status,setStatus]=useState("");
 
 
 
 
 const handleChange=(e:any)=>{
 
-setFormData({
+setForm({
 
-...formData,
+...form,
 
 [e.target.name]:e.target.value
 
@@ -64,106 +40,63 @@ setFormData({
 
 
 
-const handleServiceChange=(service:string)=>{
 
 
-setFormData({
-
-...formData,
-
-services:
-
-formData.services.includes(service)
-
-?
-
-formData.services.filter(
-(item)=>item!==service
-)
-
-:
-
-[
-...formData.services,
-service
-]
-
-});
-
-
-};
-
-
-
-
-
-
-
-const handleSubmit=async(e:React.FormEvent)=>{
-
+const submitForm=async(e:any)=>{
 
 e.preventDefault();
 
 
-setStatus("Sending...");
+setLoading(true);
 
 
 try{
 
 
-const res=await fetch("/api/contact",{
+await fetch("/api/contact",{
 
 method:"POST",
 
 headers:{
+
 "Content-Type":"application/json"
+
 },
 
-body:JSON.stringify(formData)
+
+body:JSON.stringify(form)
 
 });
 
 
-
-if(res.ok){
-
-setStatus(
-"Thank you! We will contact you soon."
-);
+alert("Thank you! We will contact you soon.");
 
 
-setFormData({
+setForm({
 
 name:"",
 company:"",
 email:"",
 phone:"",
-services:[],
-budget:"",
-timeline:"",
 message:""
 
 });
 
 
 }
-else{
 
-setStatus("Something went wrong.");
+catch(error){
 
-}
-
+alert("Something went wrong");
 
 }
 
-catch{
 
-setStatus(
-"Failed to send message."
-);
+finally{
+
+setLoading(false);
 
 }
-
 
 
 };
@@ -176,25 +109,47 @@ setStatus(
 
 return(
 
-
 <section
 
 id="contact"
 
 className="
-bg-[#E8F2FE]
-py-24
-dark:bg-[#050B1C]
+relative
+overflow-hidden
+bg-[#050B1C]
+py-28
+text-white
 "
 
 >
 
 
-<div className="container-x">
+{/* Background Glow */}
+
+
+<div
+
+className="
+absolute
+left-1/2
+top-0
+h-[450px]
+w-[450px]
+-translate-x-1/2
+rounded-full
+bg-blue-600/20
+blur-[140px]
+"
+
+/>
 
 
 
-<div className="grid gap-12 lg:grid-cols-2">
+
+
+
+
+<div className="container-x relative">
 
 
 
@@ -202,39 +157,54 @@ dark:bg-[#050B1C]
 
 
 
-{/* LEFT */}
+
+{/* Heading */}
 
 
-<div>
+
+<div
+
+className="
+mb-16
+text-center
+"
+
+>
 
 
-<p className="
+<p
+
+className="
 font-semibold
-text-[#334DAF]
-">
+uppercase
+tracking-[0.35em]
+text-cyan-400
+"
 
-Get In Touch
+>
+
+Contact Us
 
 </p>
+
+
 
 
 
 <h2
 
 className="
-mt-3
-text-4xl
+mt-5
+text-5xl
 font-extrabold
-text-[#091F5C]
-dark:text-white
 "
 
 >
 
-Let's Build Something
-Great Together
+Let's Build Something Great
 
 </h2>
+
 
 
 
@@ -245,18 +215,21 @@ Great Together
 className="
 mt-5
 text-lg
-leading-8
-text-slate-600
-dark:text-slate-300
+text-slate-300
 "
 
 >
 
-Have a project in mind? Let's discuss how
-Indigen Technologies can help transform your business
-with intelligent software solutions.
+Have a project idea? Let's discuss how we can create
+powerful digital solutions together.
 
 </p>
+
+
+
+</div>
+
+
 
 
 
@@ -267,36 +240,221 @@ with intelligent software solutions.
 <div
 
 className="
-mt-8
-rounded-3xl
-bg-[#091F5C]
-p-8
-text-white
+grid
+gap-14
+lg:grid-cols-2
 "
 
 >
 
 
 
-<p>
 
-📍 Pune, Maharashtra, India
+
+
+
+
+
+{/* LEFT CONTENT */}
+
+
+
+<div
+
+className="
+flex
+flex-col
+justify-center
+"
+
+>
+
+
+
+<h3
+
+className="
+text-4xl
+font-extrabold
+"
+
+>
+
+Get In Touch
+
+</h3>
+
+
+
+
+
+<p
+
+className="
+mt-5
+max-w-lg
+leading-8
+text-slate-300
+"
+
+>
+
+Whether you need enterprise software,
+industrial automation solutions or digital
+transformation services, our team is ready
+to help you.
 
 </p>
 
 
-<p className="mt-4">
 
-✉ enquiry@indigentech.com
+
+
+
+
+
+<div
+
+className="
+mt-10
+space-y-8
+"
+
+>
+
+
+
+
+
+
+
+<div>
+
+
+<p
+
+className="
+text-sm
+font-semibold
+uppercase
+tracking-wider
+text-cyan-400
+"
+
+>
+
+Email
 
 </p>
 
 
-<p className="mt-4">
+<p
 
-☎ +91 9075000427
+className="
+mt-2
+text-xl
+font-medium
+"
+
+>
+
+enquiry@indigentech.com
 
 </p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div>
+
+
+<p
+
+className="
+text-sm
+font-semibold
+uppercase
+tracking-wider
+text-cyan-400
+"
+
+>
+
+Phone
+
+</p>
+
+
+<p
+
+className="
+mt-2
+text-xl
+font-medium
+"
+
+>
+
++91 90750 00427
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div>
+
+
+<p
+
+className="
+text-sm
+font-semibold
+uppercase
+tracking-wider
+text-cyan-400
+"
+
+>
+
+Location
+
+</p>
+
+
+<p
+
+className="
+mt-2
+text-xl
+font-medium
+"
+
+>
+
+Baner, Maharastra, India
+
+</p>
+
+
+</div>
+
+
+
 
 
 
@@ -304,7 +462,15 @@ text-white
 
 
 
+
+
+
+
 </div>
+
+
+
+
 
 
 
@@ -318,27 +484,39 @@ text-white
 
 
 
-<div
+<form
+
+onSubmit={submitForm}
 
 className="
 rounded-3xl
 border
-border-[#D0E4FE]
-bg-white
-p-8
-shadow-card
-dark:border-[#334DAF]
-dark:bg-[#091F5C]
+border-white/20
+
+bg-white/[0.08]
+
+backdrop-blur-2xl
+
+p-10
+
+shadow-[0_25px_80px_rgba(0,0,0,0.35)]
+
 "
 
 >
 
 
-<form
 
-onSubmit={handleSubmit}
 
-className="space-y-5"
+
+
+<div
+
+className="
+grid
+gap-5
+md:grid-cols-2
+"
 
 >
 
@@ -350,24 +528,27 @@ className="space-y-5"
 
 name="name"
 
-value={formData.name}
+placeholder="Your Name"
+
+value={form.name}
 
 onChange={handleChange}
 
-placeholder="Your Name"
-
 className="
-w-full
 rounded-xl
 border
-border-[#D0E4FE]
-px-4
-py-3
+border-white/20
+bg-white/10
+px-5
+py-4
+text-white
 outline-none
-focus:border-[#334DAF]
+placeholder:text-slate-400
+focus:border-cyan-400
 "
 
 />
+
 
 
 
@@ -378,24 +559,31 @@ focus:border-[#334DAF]
 
 name="company"
 
-value={formData.company}
+placeholder="Company Name"
+
+value={form.company}
 
 onChange={handleChange}
 
-placeholder="Company Name"
-
 className="
-w-full
 rounded-xl
 border
-border-[#D0E4FE]
-px-4
-py-3
+border-white/20
+bg-white/10
+px-5
+py-4
+text-white
 outline-none
-focus:border-[#334DAF]
+placeholder:text-slate-400
+focus:border-cyan-400
 "
 
 />
+
+
+
+</div>
+
 
 
 
@@ -407,26 +595,29 @@ focus:border-[#334DAF]
 
 name="email"
 
-type="email"
+placeholder="Email Address"
 
-value={formData.email}
+value={form.email}
 
 onChange={handleChange}
 
-placeholder="Email Address"
-
 className="
+mt-5
 w-full
 rounded-xl
 border
-border-[#D0E4FE]
-px-4
-py-3
+border-white/20
+bg-white/10
+px-5
+py-4
+text-white
 outline-none
-focus:border-[#334DAF]
+placeholder:text-slate-400
+focus:border-cyan-400
 "
 
 />
+
 
 
 
@@ -438,144 +629,28 @@ focus:border-[#334DAF]
 
 name="phone"
 
-value={formData.phone}
-
-onChange={handleChange}
-
 placeholder="Phone Number"
 
-className="
-w-full
-rounded-xl
-border
-border-[#D0E4FE]
-px-4
-py-3
-outline-none
-focus:border-[#334DAF]
-"
-
-/>
-
-
-
-
-
-
-
-<div>
-
-
-<h4 className="
-mb-3
-font-semibold
-text-[#091F5C]
-dark:text-white
-">
-
-Services Interested In
-
-</h4>
-
-
-
-<div className="
-grid
-gap-3
-sm:grid-cols-2
-">
-
-
-{servicesList.map(service=>(
-
-
-<label
-
-key={service}
-
-className="
-flex
-gap-2
-text-sm
-text-slate-600
-dark:text-slate-300
-"
-
->
-
-
-<input
-
-type="checkbox"
-
-checked={
-formData.services.includes(service)
-}
-
-onChange={()=>handleServiceChange(service)}
-
-className="accent-[#334DAF]"
-
-/>
-
-
-{service}
-
-
-</label>
-
-
-))}
-
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-<select
-
-name="timeline"
-
-value={formData.timeline}
+value={form.phone}
 
 onChange={handleChange}
 
 className="
+mt-5
 w-full
 rounded-xl
 border
-border-[#D0E4FE]
-px-4
-py-3
+border-white/20
+bg-white/10
+px-5
+py-4
+text-white
+outline-none
+placeholder:text-slate-400
+focus:border-cyan-400
 "
 
->
-
-
-<option value="">
-Project Timeline
-</option>
-
-
-{timelineList.map(item=>(
-
-<option key={item}>
-{item}
-</option>
-
-))}
-
-
-</select>
-
+/>
 
 
 
@@ -590,19 +665,25 @@ name="message"
 
 rows={5}
 
-value={formData.message}
+placeholder="Tell us about your project"
+
+value={form.message}
 
 onChange={handleChange}
 
-placeholder="Describe your project requirement"
-
 className="
+mt-5
 w-full
 rounded-xl
 border
-border-[#D0E4FE]
-px-4
-py-3
+border-white/20
+bg-white/10
+px-5
+py-4
+text-white
+outline-none
+placeholder:text-slate-400
+focus:border-cyan-400
 "
 
 />
@@ -617,21 +698,47 @@ py-3
 
 <button
 
+disabled={loading}
+
 className="
+mt-6
 w-full
 rounded-xl
-bg-[#334DAF]
-px-6
-py-3
-font-semibold
+
+bg-gradient-to-r
+
+from-blue-500
+
+to-cyan-400
+
+
+py-4
+
+font-bold
+
 text-white
+
+
 transition
-hover:bg-[#091F5C]
+
+hover:scale-[1.02]
+
+disabled:opacity-50
+
 "
 
 >
 
-Send Inquiry
+{
+
+loading
+?
+"Sending..."
+:
+"Send Message →"
+
+}
+
 
 </button>
 
@@ -639,25 +746,16 @@ Send Inquiry
 
 
 
-{status && (
-
-<p className="
-text-sm
-font-medium
-text-[#334DAF]
-">
-
-{status}
-
-</p>
-
-)}
-
 
 
 </form>
 
 
+
+
+
+
+
 </div>
 
 
@@ -665,17 +763,17 @@ text-[#334DAF]
 
 
 
-</div>
-
-
 
 </div>
+
+
+
+
 
 
 </section>
 
 
-);
-
+)
 
 }

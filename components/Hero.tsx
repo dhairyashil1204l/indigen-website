@@ -153,10 +153,7 @@ text-slate-200
 
 >
 
-We build scalable software solutions,
-automation systems and AI-driven platforms
-that help businesses transform operations
-and achieve digital growth.
+We design and develop scalable software solutions, intelligent automation systems, and AI-powered platforms that enable businesses to optimize operations, improve efficiency, and accelerate digital transformation.
 
 </p>
 
@@ -283,24 +280,19 @@ Explore Services
 
 
 {/* BOTTOM FADE */}
-
 <div
-
 className="
 absolute
 bottom-0
 left-0
-h-72
+h-40
 w-full
 bg-gradient-to-t
 from-[#050B1C]
-via-[#050B1C]/70
 to-transparent
+pointer-events-none
 "
-
- />
-
-
+/>
 
 </section>
 
