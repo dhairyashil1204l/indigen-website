@@ -29,7 +29,7 @@ return(
 <footer
 
 className="
-bg-[#050B1C]
+bg-black
 text-white
 pt-16
 "
@@ -46,7 +46,7 @@ overflow-hidden
 rounded-t-[50px]
 border
 border-white/10
-bg-[#101F2D]
+bg-[#14213D]
 "
 
 >
@@ -108,7 +108,7 @@ className="
 mt-1
 text-sm
 tracking-[0.4em]
-text-cyan-400
+text-[#FCA311]
 "
 
 >
@@ -127,7 +127,7 @@ TECHNOLOGIES
 className="
 mt-6
 leading-8
-text-slate-300
+text-[#E5E5E5]
 "
 
 >
@@ -137,31 +137,6 @@ for manufacturing, automation and enterprise
 digital transformation.
 
 </p>
-
-
-
-
-
-
-
-
-<div
-
-className="
-mt-8
-space-y-4
-text-slate-300
-"
-
->
-
-
-
-
-
-</div>
-
-
 
 
 
@@ -202,7 +177,7 @@ Services
 className="
 mt-6
 space-y-4
-text-slate-300
+text-[#E5E5E5]
 "
 
 >
@@ -289,7 +264,7 @@ Industries
 className="
 mt-6
 space-y-4
-text-slate-300
+text-[#E5E5E5]
 "
 
 >
@@ -375,7 +350,7 @@ Quick Links
 className="
 mt-6
 space-y-4
-text-slate-300
+text-[#E5E5E5]
 "
 
 >
@@ -383,7 +358,13 @@ text-slate-300
 
 <li>
 
-<Link href="#about">
+<Link 
+
+href="#about"
+
+className="hover:text-[#FCA311] transition"
+
+>
 
 About Us
 
@@ -396,7 +377,13 @@ About Us
 
 <li>
 
-<Link href="#services">
+<Link 
+
+href="#services"
+
+className="hover:text-[#FCA311] transition"
+
+>
 
 Services
 
@@ -410,7 +397,13 @@ Services
 
 <li>
 
-<Link href="#projects">
+<Link 
+
+href="#projects"
+
+className="hover:text-[#FCA311] transition"
+
+>
 
 Projects
 
@@ -424,7 +417,13 @@ Projects
 
 <li>
 
-<Link href="#blogs">
+<Link 
+
+href="#blogs"
+
+className="hover:text-[#FCA311] transition"
+
+>
 
 Blogs
 
@@ -438,7 +437,13 @@ Blogs
 
 <li>
 
-<Link href="#contact">
+<Link 
+
+href="#contact"
+
+className="hover:text-[#FCA311] transition"
+
+>
 
 Contact Us
 
@@ -528,6 +533,7 @@ mb-8
 rounded-2xl
 border
 border-white/10
+bg-white/[0.04]
 px-8
 py-6
 
@@ -539,37 +545,37 @@ justify-between
 
 gap-5
 
-text-slate-300
+text-[#E5E5E5]
 
 "
 
 >
 
 
-<span>
+<span className="hover:text-[#FCA311] cursor-pointer transition">
 
-in LinkedIn
-
-</span>
-
-
-<span>
-
-◎ Instagram
+LinkedIn
 
 </span>
 
 
-<span>
+<span className="hover:text-[#FCA311] cursor-pointer transition">
 
-𝕏 Twitter
+Instagram
 
 </span>
 
 
-<span>
+<span className="hover:text-[#FCA311] cursor-pointer transition">
 
-f Facebook
+X Twitter
+
+</span>
+
+
+<span className="hover:text-[#FCA311] cursor-pointer transition">
+
+Facebook
 
 </span>
 
@@ -609,7 +615,7 @@ justify-between
 
 text-sm
 
-text-slate-400
+text-[#E5E5E5]
 
 "
 
@@ -661,25 +667,46 @@ Privacy Policy | Terms & Conditions
 onClick={scrollTop}
 
 className="
+
 fixed
+
 bottom-8
+
 right-8
 
+
+
 flex
+
 h-16
+
 w-16
+
 items-center
+
 justify-center
+
+
 
 rounded-full
 
-bg-blue-600
 
-text-white
 
-shadow-xl
+bg-[#FCA311]
+
+
+
+text-black
+
+
+
+shadow-[0_10px_40px_rgba(252,163,17,0.45)]
+
+
 
 transition
+
+
 
 hover:scale-110
 

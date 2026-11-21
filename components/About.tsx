@@ -4,42 +4,35 @@ import { motion } from "framer-motion";
 
 
 const stats = [
-  {
-    number: "50+",
-    label: "Projects Delivered",
-  },
-  {
-    number: "10+",
-    label: "Technologies",
-  },
-  {
-    number: "24/7",
-    label: "Support",
-  },
-  {
-    number: "100%",
-    label: "Client Focus",
-  },
+
+{
+number:"50+",
+label:"Projects Delivered"
+},
+
+{
+number:"10+",
+label:"Technologies"
+},
+
+{
+number:"24/7",
+label:"Support"
+},
+
+{
+number:"100%",
+label:"Client Focus"
+}
+
 ];
 
 
 
-export default function About() {
-<div
-className="
-absolute
-top-0
-left-1/2
-h-40
-w-[600px]
--translate-x-1/2
-rounded-full
-bg-blue-500/20
-blur-[120px]
-"
-/>
+export default function About(){
 
-return (
+
+return(
 
 <section
 
@@ -48,88 +41,17 @@ id="about"
 className="
 relative
 overflow-hidden
-bg-gradient-to-b
-from-[#050B1C]
-via-[#07152F]
-to-[#07152F]
+bg-[#F7F7F5]
 py-28
-text-white
+text-black
 "
 
 >
 
 
-
-{/* GRID BACKGROUND */}
-
-<div
-
-className="
-absolute
-inset-0
-opacity-[0.05]
-bg-[linear-gradient(#3b82f6_1px,transparent_1px),linear-gradient(90deg,#3b82f6_1px,transparent_1px)]
-bg-[size:40px_40px]
-"
-
-/>
+<div className="container-x">
 
 
-
-
-
-{/* GLOW EFFECT */}
-
-
-<div className="
-absolute
-inset-0
-pointer-events-none
-">
-
-
-<div
-
-className="
-absolute
-right-[-120px]
-top-20
-h-[450px]
-w-[450px]
-rounded-full
-bg-blue-500/15
-blur-[150px]
-"
-
-/>
-
-
-
-<div
-
-className="
-absolute
-left-[-120px]
-bottom-0
-h-[350px]
-w-[350px]
-rounded-full
-bg-cyan-400/10
-blur-[130px]
-"
-
-/>
-
-
-</div>
-
-
-
-
-
-
-
-<div className="container-x relative z-10">
 
 
 
@@ -156,7 +78,9 @@ viewport={{
 once:true
 }}
 
-className="max-w-5xl"
+className="
+max-w-5xl
+"
 
 >
 
@@ -168,7 +92,7 @@ text-sm
 font-bold
 uppercase
 tracking-[0.35em]
-text-blue-400
+text-[#FCA311]
 "
 
 >
@@ -180,10 +104,12 @@ ABOUT INDIGEN TECHNOLOGIES
 
 
 
+
+
 <h2
 
 className="
-mt-6
+mt-5
 text-5xl
 font-extrabold
 leading-tight
@@ -194,7 +120,14 @@ lg:text-6xl
 
 Engineering Solutions
 
-<span className="block text-blue-400">
+<span
+
+className="
+block
+text-[#FCA311]
+"
+
+>
 
 Built For The Future Of Industry
 
@@ -206,25 +139,27 @@ Built For The Future Of Industry
 
 
 
+
+
 <p
 
 className="
-mt-8
+mt-7
 max-w-4xl
 text-lg
 leading-8
-text-slate-300
+text-gray-600
 "
 
 >
 
-Indigen Technologies is dedicated to delivering
-advanced digital engineering solutions that bridge
-the gap between technology and industry. We design
-intelligent software platforms, automation systems,
-and innovative solutions that enable organizations
-to enhance performance, streamline processes, and
-adapt to a rapidly evolving digital landscape.
+Indigen Technologies delivers advanced
+digital engineering solutions that connect
+technology with industry. We design intelligent
+software platforms, automation systems and
+enterprise solutions that help businesses
+improve efficiency, optimize operations and
+accelerate digital transformation.
 
 </p>
 
@@ -239,7 +174,7 @@ adapt to a rapidly evolving digital landscape.
 
 
 
-{/* CONTENT */}
+{/* MAIN SECTION */}
 
 
 
@@ -248,7 +183,8 @@ adapt to a rapidly evolving digital landscape.
 className="
 mt-20
 grid
-gap-14
+items-center
+gap-16
 lg:grid-cols-2
 "
 
@@ -259,7 +195,10 @@ lg:grid-cols-2
 
 
 
-{/* LEFT */}
+
+
+
+{/* IMAGE AREA */}
 
 
 
@@ -267,7 +206,7 @@ lg:grid-cols-2
 
 initial={{
 opacity:0,
-x:-40
+x:-50
 }}
 
 whileInView={{
@@ -279,7 +218,144 @@ viewport={{
 once:true
 }}
 
+className="
+relative
+flex
+justify-center
+"
+
 >
+
+
+
+
+
+{/* GOLD CIRCLE */}
+
+
+
+<div
+
+className="
+absolute
+left-5
+top-1/2
+-translate-y-1/2
+
+h-[430px]
+w-[430px]
+
+rounded-full
+
+bg-[#FCA311]
+
+"
+
+>
+
+</div>
+
+
+
+
+
+
+
+{/* IMAGE */}
+
+
+
+<div
+
+className="
+relative
+z-10
+
+h-[430px]
+w-[430px]
+
+overflow-hidden
+
+rounded-[45px]
+
+border-[14px]
+
+border-[#F7F7F5]
+
+"
+
+>
+
+
+<img
+
+src="/images/about.jpg"
+
+alt="Indigen Technologies"
+
+className="
+h-full
+w-full
+object-cover
+"
+
+/>
+
+
+</div>
+
+
+
+
+
+
+</motion.div>
+
+
+
+
+
+
+
+
+
+{/* RIGHT CARD */}
+
+
+
+<motion.div
+
+initial={{
+opacity:0,
+x:50
+}}
+
+whileInView={{
+opacity:1,
+x:0
+}}
+
+viewport={{
+once:true
+}}
+
+className="
+rounded-[35px]
+
+bg-[#171717]
+
+p-10
+
+text-white
+
+"
+
+>
+
+
+
+
+
 
 
 <h3
@@ -297,22 +373,33 @@ Who We Are
 
 
 
+
+
+
+
+
 <p
 
 className="
 mt-6
 leading-8
-text-slate-300
+text-gray-300
 "
 
 >
 
-With a strong focus on quality, reliability,
-and innovation, we collaborate with businesses
-to develop scalable and secure technology
-solutions tailored to their unique requirements.
+With a strong focus on innovation,
+quality and reliability, we collaborate
+with businesses to build scalable,
+secure and future-ready technology
+solutions.
 
 </p>
+
+
+
+
+
 
 
 
@@ -321,20 +408,19 @@ solutions tailored to their unique requirements.
 className="
 mt-5
 leading-8
-text-slate-300
+text-gray-300
 "
 
 >
 
-Our mission is to develop reliable and
-future-ready systems that optimize industrial
-operations, improve efficiency, and deliver
-sustainable business growth.
+Our mission is to develop intelligent
+systems that optimize industrial
+operations, improve productivity and
+enable sustainable business growth.
 
 </p>
 
 
-</motion.div>
 
 
 
@@ -342,29 +428,14 @@ sustainable business growth.
 
 
 
-
-
-{/* RIGHT STATS */}
+{/* STATS */}
 
 
 
-<motion.div
-
-initial={{
-opacity:0,
-x:40
-}}
-
-whileInView={{
-opacity:1,
-x:0
-}}
-
-viewport={{
-once:true
-}}
+<div
 
 className="
+mt-10
 grid
 grid-cols-2
 gap-5
@@ -374,6 +445,7 @@ gap-5
 
 
 {
+
 stats.map((item)=>(
 
 
@@ -382,35 +454,39 @@ stats.map((item)=>(
 key={item.label}
 
 className="
-rounded-3xl
+rounded-2xl
+
+bg-[#252525]
+
 border
-border-blue-300/20
-bg-blue-500/[0.08]
-p-7
-backdrop-blur-xl
+border-white/10
+
+p-6
+
 transition
-duration-300
+
 hover:-translate-y-2
-hover:border-blue-300/50
-hover:bg-blue-500/[0.12]
+
 "
 
 >
 
 
-<h3
+<h4
 
 className="
-text-5xl
+text-4xl
 font-extrabold
-text-blue-300
+text-[#FCA311]
 "
 
 >
 
 {item.number}
 
-</h3>
+</h4>
+
+
 
 
 
@@ -418,10 +494,15 @@ text-blue-300
 
 className="
 mt-3
-text-sm
+
+text-xs
+
 uppercase
+
 tracking-widest
-text-slate-300
+
+text-gray-400
+
 "
 
 >
@@ -437,7 +518,14 @@ text-slate-300
 
 ))
 
+
 }
+
+
+</div>
+
+
+
 
 
 
@@ -448,10 +536,6 @@ text-slate-300
 
 
 
-</div>
-
-
-
 
 </div>
 
@@ -460,28 +544,18 @@ text-slate-300
 
 
 
-{/* SECTION TRANSITION */}
 
-<div
+</div>
 
-className="
-absolute
-bottom-0
-left-0
-h-32
-w-full
-bg-gradient-to-t
-from-[#07152F]
-to-transparent
-"
 
-/>
+
+
 
 
 
 </section>
 
 
-);
+)
 
 }

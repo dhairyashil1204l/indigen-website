@@ -1,6 +1,5 @@
 "use client";
 
-
 import Link from "next/link";
 
 
@@ -19,20 +18,26 @@ min-h-screen
 overflow-hidden
 flex
 items-center
+bg-white
 "
 
 >
 
 
-{/* BACKGROUND IMAGE */}
+{/* RIGHT IMAGE */}
+
 
 <div
 
 className="
 absolute
-inset-0
+right-[-120px]
+top-24
+h-[700px]
+w-[700px]
 bg-cover
 bg-center
+opacity-90
 "
 
 style={{
@@ -48,7 +53,8 @@ backgroundImage:
 
 
 
-{/* OVERLAY */}
+{/* IMAGE BLEND */}
+
 
 <div
 
@@ -56,12 +62,38 @@ className="
 absolute
 inset-0
 bg-gradient-to-r
-from-[#050B1C]/90
-via-[#091F5C]/70
-to-[#091F5C]/30
+from-white
+via-white/80
+to-transparent
 "
 
-/>
+></div>
+
+
+
+
+
+
+
+{/* GOLD SIDE PANEL */}
+
+
+<div
+
+className="
+absolute
+right-0
+top-0
+h-full
+w-[35%]
+bg-[#FCA311]/10
+rounded-l-[180px]
+"
+
+></div>
+
+
+
 
 
 
@@ -71,6 +103,8 @@ to-[#091F5C]/30
 
 {/* CONTENT */}
 
+
+
 <div
 
 className="
@@ -78,7 +112,7 @@ relative
 z-10
 container-x
 pt-32
-pb-40
+pb-32
 "
 
 >
@@ -87,21 +121,24 @@ pb-40
 <div
 
 className="
-max-w-4xl
+max-w-3xl
 "
 
 >
 
 
+
+
+
 <p
 
 className="
-mb-5
+mb-6
 text-sm
-font-semibold
+font-bold
 uppercase
 tracking-[0.35em]
-text-blue-300
+text-[#FCA311]
 "
 
 >
@@ -114,28 +151,54 @@ Industrial Software Solutions
 
 
 
+
+
+
+
 <h1
 
 className="
 text-5xl
 font-extrabold
 leading-tight
-text-white
+text-[#14213D]
+
 md:text-6xl
+
 lg:text-7xl
+
 "
 
 >
 
 Engineering Intelligent
+
 <br/>
 
+
 Software Solutions
+
 <br/>
+
+
+<span
+
+className="
+text-[#FCA311]
+"
+
+>
 
 For Industrial Excellence
 
+</span>
+
+
 </h1>
+
+
+
+
 
 
 
@@ -144,18 +207,24 @@ For Industrial Excellence
 <p
 
 className="
-mt-7
+mt-8
 max-w-2xl
 text-lg
 leading-8
-text-slate-200
+text-gray-700
 "
 
 >
 
-We design and develop scalable software solutions, intelligent automation systems, and AI-powered platforms that enable businesses to optimize operations, improve efficiency, and accelerate digital transformation.
+We design and develop scalable software solutions,
+intelligent automation systems, and AI-powered
+platforms that enable businesses to optimize
+operations, improve efficiency, and accelerate
+digital transformation.
 
 </p>
+
+
 
 
 
@@ -173,53 +242,54 @@ gap-5
 "
 
 >
+
+
+
+
+
+
+
+
+{/* PRIMARY BUTTON */}
+
+
 <Link
 
 href="#contact"
 
 className="
-group
-relative
-overflow-hidden
-inline-flex
-items-center
-justify-center
+
 rounded-xl
-bg-[#2563EB]
+
+bg-[#FCA311]
+
 px-8
+
 py-4
+
 text-sm
-font-semibold
-text-white
-shadow-[0_10px_30px_rgba(37,99,235,0.35)]
+
+font-bold
+
+text-black
+
 transition-all
+
 duration-300
-hover:bg-[#1D4ED8]
+
+
 hover:-translate-y-1
+
+hover:bg-[#14213D]
+
+hover:text-white
+
+
 "
 
 >
 
-<span className="relative z-10">
-Get Started
-</span>
-
-
-<div
-className="
-absolute
-inset-0
-translate-x-[-100%]
-bg-gradient-to-r
-from-transparent
-via-white/30
-to-transparent
-transition-transform
-duration-700
-group-hover:translate-x-[100%]
-"
-/>
-
+Get Started →
 
 </Link>
 
@@ -228,31 +298,46 @@ group-hover:translate-x-[100%]
 
 
 
+
+
+
+{/* SECONDARY BUTTON */}
+
+
+
 <Link
 
 href="#services"
 
 className="
-group
-inline-flex
-items-center
-justify-center
+
 rounded-xl
-border
-border-white/30
-bg-white/10
+
+border-2
+
+border-[#14213D]
+
 px-8
+
 py-4
+
 text-sm
-font-semibold
-text-white
-backdrop-blur-xl
+
+font-bold
+
+text-[#14213D]
+
+
 transition-all
+
 duration-300
-hover:-translate-y-1
-hover:border-white/60
-hover:bg-white
-hover:text-[#091F5C]
+
+
+hover:bg-[#14213D]
+
+hover:text-white
+
+
 "
 
 >
@@ -263,14 +348,21 @@ Explore Services
 
 
 
+
+
+
 </div>
 
 
 
 
+
+
+
 </div>
 
 
+
 </div>
 
 
@@ -279,25 +371,35 @@ Explore Services
 
 
 
-{/* BOTTOM FADE */}
+
+
+{/* BOTTOM TRANSITION */}
+
+
 <div
+
 className="
 absolute
 bottom-0
 left-0
-h-40
+h-28
 w-full
 bg-gradient-to-t
-from-[#050B1C]
+from-[#E5E5E5]
 to-transparent
-pointer-events-none
 "
-/>
+
+></div>
+
+
+
+
+
+
 
 </section>
 
 
 );
-
 
 }

@@ -7,7 +7,7 @@ import { INDUSTRIES } from "@/lib/data";
 export default function Industries(){
 
 
-return (
+return(
 
 <section
 
@@ -16,57 +16,80 @@ id="industries"
 className="
 relative
 overflow-hidden
-bg-gradient-to-b
-from-[#07152F]
-to-[#050B1C]
-py-24
-text-white
+
+bg-[#F7F7F5]
+
+py-28
+
+text-black
 "
 
 >
 
 
-{/* GRID */}
-
-<div
-
-className="
-absolute
-inset-0
-opacity-[0.05]
-bg-[linear-gradient(#3b82f6_1px,transparent_1px),linear-gradient(90deg,#3b82f6_1px,transparent_1px)]
-bg-[size:40px_40px]
-"
-
-/>
+<div className="container-x">
 
 
 
-<div className="container-x relative z-10">
 
 
 
-{/* Heading */}
 
 
-<div className="max-w-3xl">
+{/* HEADER */}
+
+
+
+<motion.div
+
+initial={{
+
+opacity:0,
+
+y:30
+
+}}
+
+whileInView={{
+
+opacity:1,
+
+y:0
+
+}}
+
+viewport={{
+
+once:true
+
+}}
+
+className="max-w-4xl"
+
+>
+
 
 
 <p
 
 className="
-text-l
+text-sm
 font-bold
 uppercase
 tracking-[0.35em]
-text-blue-400
+text-[#FCA311]
 "
 
 >
 
-Industries
+INDUSTRIES
 
 </p>
+
+
+
+
+
 
 
 
@@ -76,6 +99,7 @@ className="
 mt-5
 text-5xl
 font-extrabold
+lg:text-6xl
 "
 
 >
@@ -86,49 +110,68 @@ Industries We Serve
 
 
 
+
+
+
+
+
 <p
 
 className="
 mt-5
+max-w-3xl
 text-lg
 leading-8
-text-slate-300
+text-gray-600
 "
 
 >
 
-We deliver intelligent software solutions and
-automation systems designed for diverse
-industrial sectors.
+We deliver intelligent software solutions
+and automation systems designed for
+diverse industrial sectors.
 
 </p>
 
 
-</div>
+
+</motion.div>
 
 
 
 
 
 
-{/* Cards */}
+
+
+
+{/* INDUSTRY CARDS */}
+
 
 
 <div
 
 className="
-mt-14
+mt-16
+
 grid
-gap-6
+
+gap-7
+
 md:grid-cols-2
+
 lg:grid-cols-3
+
 "
 
 >
 
 
+
 {
+
 INDUSTRIES.map((industry,index)=>(
+
 
 
 <motion.div
@@ -138,53 +181,145 @@ key={industry.title}
 
 
 initial={{
+
 opacity:0,
-y:30
+
+y:40
+
 }}
+
 
 
 whileInView={{
+
 opacity:1,
+
 y:0
+
 }}
+
 
 
 viewport={{
+
 once:true
+
 }}
 
+
+
+transition={{
+
+delay:index*0.08
+
+}}
+
+
+
 className="
+
 group
+
 relative
+
 overflow-hidden
-rounded-3xl
+
+
+rounded-[30px]
+
+
+bg-[#171717]
+
+
 border
-border-white/10
-bg-white/[0.06]
+
+border-[#333]
+
+
 p-8
-backdrop-blur-xl
+
+
+text-white
+
+
 transition-all
-duration-300
-hover:-translate-y-2
-hover:border-blue-400/40
-hover:bg-white/[0.08]
-hover:shadow-[0_10px_30px_rgba(37,99,235,0.15)]
+
+
+duration-500
+
+
+
+hover:-translate-y-3
+
+
+
+hover:border-[#FCA311]
+
+hover:shadow-[0_20px_50px_rgba(0,0,0,0.25)]
+
 "
+
 >
+
+
+
+
+
+
+
+
+
+{/* TOP GOLD LINE */}
+
+
+
+<div
+
+className="
+absolute
+top-0
+left-0
+h-1
+w-0
+bg-[#FCA311]
+transition-all
+duration-500
+group-hover:w-full
+"
+
+/>
+
+
+
+
+
+
+
+
+
+{/* NUMBER */}
+
 
 
 <div
 
 className="
 flex
-h-12
-w-12
+h-14
+w-14
 items-center
 justify-center
-rounded-xl
-bg-blue-500/20
+
+rounded-2xl
+
+bg-[#FCA311]
+
 text-xl
-text-blue-300
+
+font-extrabold
+
+text-black
+
 "
 
 >
@@ -195,12 +330,21 @@ text-blue-300
 
 
 
+
+
+
+
+
+
 <h3
 
 className="
-mt-6
+mt-7
+
 text-2xl
+
 font-bold
+
 "
 
 >
@@ -211,12 +355,20 @@ font-bold
 
 
 
+
+
+
+
+
 <p
 
 className="
-mt-3
+mt-4
+
 leading-7
-text-slate-300
+
+text-gray-400
+
 "
 
 >
@@ -227,10 +379,45 @@ text-slate-300
 
 
 
+
+
+
+
+
+
+<div
+
+className="
+mt-7
+
+h-[2px]
+
+w-12
+
+bg-[#FCA311]
+
+transition-all
+
+duration-300
+
+group-hover:w-full
+
+"
+
+/>
+
+
+
+
+
+
+
 </motion.div>
 
 
+
 ))
+
 
 }
 
@@ -239,44 +426,20 @@ text-slate-300
 </div>
 
 
+
+
+
+
 </div>
 
-{/* PREMIUM SECTION TRANSITION */}
-
-<div
-className="
-absolute
-bottom-0
-left-0
-w-full
-h-48
-bg-gradient-to-b
-from-transparent
-via-[#07152F]
-to-[#07152F]
-pointer-events-none
-"
-/>
 
 
-<div
 
-className="
-absolute
-bottom-[-100px]
-left-1/2
--translate-x-1/2
-w-[800px]
-h-[220px]
-rounded-full
-bg-blue-500/20
-blur-[140px]
-"
 
-></div>
+
 </section>
 
 
-);
+)
 
 }

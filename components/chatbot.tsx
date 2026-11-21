@@ -79,6 +79,7 @@ behavior:"smooth"
 
 
 
+
 const sendMessage=async()=>{
 
 
@@ -216,6 +217,8 @@ setLoading(false);
 
 
 
+
+
 return(
 
 <>
@@ -224,23 +227,22 @@ return(
 
 
 
-{/* FLOATING BUTTON */}
+
+
+{/* CHAT BUTTON */}
+
 
 
 <motion.button
 
 
 whileHover={{
-
 scale:1.1
-
 }}
 
 
 whileTap={{
-
 scale:0.95
-
 }}
 
 
@@ -259,15 +261,10 @@ right-8
 z-50
 
 
-flex
 
 h-16
 
 w-16
-
-items-center
-
-justify-center
 
 
 
@@ -275,13 +272,7 @@ rounded-full
 
 
 
-bg-gradient-to-br
-
-from-blue-400
-
-via-blue-600
-
-to-blue-800
+overflow-hidden
 
 
 
@@ -291,21 +282,31 @@ border-white/30
 
 
 
-shadow-[0_15px_45px_rgba(37,99,235,0.55)]
+bg-gradient-to-br
+
+from-blue-500
+
+via-blue-700
+
+to-[#14213D]
 
 
+
+shadow-[0_15px_45px_rgba(37,99,235,0.45)]
+
+
+
+flex
+
+items-center
+
+justify-center
 
 text-white
-
-
-overflow-hidden
 
 "
 
 >
-
-
-{/* glossy shine */}
 
 
 <div
@@ -314,24 +315,19 @@ className="
 
 absolute
 
-top-0
+inset-0
 
-left-0
+bg-gradient-to-br
 
-h-1/2
+from-white/40
 
-w-full
-
-bg-gradient-to-b
-
-from-white/50
+via-transparent
 
 to-transparent
 
 "
 
 />
-
 
 
 <div className="relative">
@@ -355,7 +351,6 @@ open
 </div>
 
 
-
 </motion.button>
 
 
@@ -372,6 +367,8 @@ open
 {
 
 open &&
+
+
 
 <motion.div
 
@@ -414,9 +411,10 @@ scale:0.9
 
 transition={{
 
-duration:0.25
+duration:0.3
 
 }}
+
 
 
 
@@ -436,10 +434,13 @@ w-[calc(100%-48px)]
 sm:w-[390px]
 
 
+
 h-[560px]
 
 
+
 rounded-3xl
+
 
 
 overflow-hidden
@@ -448,7 +449,7 @@ overflow-hidden
 
 border
 
-border-blue-300/30
+border-blue-400/30
 
 
 
@@ -473,6 +474,63 @@ flex-col
 >
 
 
+{/* ROBOT BACKGROUND */}
+
+
+
+<div
+
+className="
+
+absolute
+
+inset-0
+
+bg-cover
+
+bg-center
+
+opacity-[0.18]
+
+"
+
+style={{
+
+backgroundImage:
+
+"url('/images/robotbg.jpg')"
+
+}}
+
+/>
+
+
+
+
+
+
+
+<div
+
+className="
+
+absolute
+
+inset-0
+
+bg-gradient-to-b
+
+from-[#071426]/40
+
+via-[#071426]/80
+
+to-[#071426]
+
+"
+
+/>
+
+
 
 
 
@@ -490,28 +548,31 @@ className="
 
 relative
 
-overflow-hidden
+z-10
 
 px-6
 
 py-5
 
 
-
 bg-gradient-to-r
 
-from-[#2563EB]
+from-blue-600
 
-to-[#06B6D4]
+via-blue-500
+
+to-cyan-500
+
 
 text-white
+
+
+overflow-hidden
 
 "
 
 >
 
-
-{/* shine */}
 
 
 <div
@@ -537,30 +598,36 @@ to-transparent
 
 
 
+
 <div className="relative flex items-center gap-3">
+
 
 
 <div
 
 className="
 
-h-11
+h-12
 
-w-11
+w-12
 
 rounded-full
 
+
 bg-white/20
+
 
 border
 
-border-white/30
+border-white/40
+
 
 flex
 
 items-center
 
 justify-center
+
 
 backdrop-blur-xl
 
@@ -574,42 +641,23 @@ backdrop-blur-xl
 
 
 
+
 <div>
 
 
-<h3
-
-className="
-
-font-bold
-
-text-lg
-
-"
-
->
+<h3 className="font-bold text-lg">
 
 Indigen AI Assistant
 
 </h3>
 
 
-
-<p
-
-className="
-
-text-xs
-
-text-blue-100
-
-"
-
->
+<p className="text-xs text-blue-100">
 
 ● Online
 
 </p>
+
 
 
 </div>
@@ -635,6 +683,10 @@ text-blue-100
 <div
 
 className="
+
+relative
+
+z-10
 
 flex-1
 
@@ -688,8 +740,6 @@ leading-6
 
 whitespace-pre-wrap
 
-
-
 border
 
 
@@ -697,23 +747,21 @@ border
 ${
 msg.role==="user"
 
-
 ?
 
-"bg-gradient-to-r from-blue-600 to-cyan-500 text-white border-blue-400/30 rounded-br-sm shadow-lg"
+"bg-blue-600 text-white border-blue-300/30 rounded-br-sm"
 
 
 :
 
-
-"bg-white/10 text-slate-100 border-white/10 rounded-bl-sm backdrop-blur-xl"
-
+"bg-white/10 text-white border-white/20 backdrop-blur-xl rounded-bl-sm"
 
 }
 
 `}
 
 >
+
 
 {msg.content}
 
@@ -743,13 +791,13 @@ className="
 
 w-fit
 
-rounded-2xl
+rounded-xl
 
-bg-blue-500/10
+bg-blue-500/20
 
 border
 
-border-blue-400/20
+border-blue-300/30
 
 px-4
 
@@ -757,7 +805,7 @@ py-3
 
 text-sm
 
-text-blue-200
+text-blue-100
 
 "
 
@@ -767,14 +815,13 @@ Thinking...
 
 </div>
 
+
 }
 
 
 
 
-
 <div ref={messagesEndRef}/>
-
 
 
 </div>
@@ -795,6 +842,10 @@ Thinking...
 
 className="
 
+relative
+
+z-10
+
 border-t
 
 border-white/10
@@ -804,6 +855,8 @@ p-4
 flex
 
 gap-3
+
+bg-black/20
 
 "
 
@@ -817,7 +870,6 @@ value={input}
 
 
 onChange={(e)=>setInput(e.target.value)}
-
 
 
 onKeyDown={(e)=>{
@@ -846,38 +898,29 @@ h-12
 
 resize-none
 
-
 rounded-xl
 
-
 bg-white/10
-
 
 border
 
 border-white/20
 
-
 px-4
 
 py-3
 
-
 text-white
-
 
 outline-none
 
-
 placeholder:text-slate-400
 
-
-focus:border-cyan-400
+focus:border-blue-400
 
 "
 
-/>
-
+ />
 
 
 
@@ -893,11 +936,6 @@ disabled={loading}
 
 
 className="
-
-relative
-
-overflow-hidden
-
 
 h-12
 
@@ -916,9 +954,6 @@ to-cyan-400
 
 
 
-text-white
-
-
 flex
 
 items-center
@@ -927,33 +962,15 @@ justify-center
 
 
 
-shadow-[0_10px_30px_rgba(6,182,212,0.45)]
+text-white
+
+
+
+shadow-lg
 
 "
 
 >
-
-
-<div
-
-className="
-
-absolute
-
-top-0
-
-left-0
-
-h-1/2
-
-w-full
-
-bg-white/30
-
-"
-
-/>
-
 
 
 <Send size={20}/>
@@ -963,8 +980,8 @@ bg-white/30
 
 
 
-
 </div>
+
 
 
 

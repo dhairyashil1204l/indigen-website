@@ -53,7 +53,6 @@ return index;
 
 
 
-
 function ProjectCard({
 
 index,
@@ -146,7 +145,9 @@ onClick={activeCard ? nextProject : undefined}
 className={`
 
 absolute
+
 inset-0
+
 
 
 rounded-tl-[60px]
@@ -159,13 +160,16 @@ rounded-bl-none
 
 
 
+
 border
 
 border-white/20
 
 
 
-bg-white/[0.08]
+
+bg-white/[0.06]
+
 
 backdrop-blur-2xl
 
@@ -175,7 +179,9 @@ p-12
 
 
 
-shadow-[0_30px_90px_rgba(0,0,0,0.45)]
+
+shadow-[0_30px_90px_rgba(0,0,0,0.55)]
+
 
 
 overflow-hidden
@@ -207,19 +213,31 @@ activeCard
 
 
 
-{/* glass shine */}
+
+{/* GOLD GLASS SHINE */}
+
 
 
 <div
 
 className="
+
 absolute
+
 inset-0
+
+
 bg-gradient-to-br
+
 from-white/20
+
 via-transparent
-to-blue-500/20
+
+to-[#FCA311]/20
+
+
 pointer-events-none
+
 "
 
 />
@@ -230,14 +248,20 @@ pointer-events-none
 
 
 
+
 <div
 
 className="
+
 relative
+
 z-10
+
 "
 
 >
+
+
 
 
 
@@ -248,25 +272,59 @@ z-10
 {/* NUMBER BOX */}
 
 
+
 <div
 
 className="
+
 relative
+
 flex
+
 h-16
+
 w-16
+
+
 items-center
+
 justify-center
+
+
 overflow-hidden
+
+
 rounded-2xl
+
+
+
 border
-border-white/30
+
+border-[#FCA311]/40
+
+
+
 bg-gradient-to-br
-from-blue-400/80
-to-blue-700/80
+
+
+from-[#FCA311]
+
+to-[#d97706]
+
+
+
 font-bold
+
+
 text-xl
-shadow-[0_15px_40px_rgba(37,99,235,0.45)]
+
+
+text-black
+
+
+
+shadow-[0_15px_40px_rgba(252,163,17,0.45)]
+
 "
 
 >
@@ -276,15 +334,26 @@ shadow-[0_15px_40px_rgba(37,99,235,0.45)]
 
 
 
+
+
+
 <div
 
 className="
+
 absolute
+
 inset-0
+
+
 bg-gradient-to-tr
-from-white/40
+
+from-white/50
+
 via-transparent
+
 to-transparent
+
 "
 
 />
@@ -303,10 +372,15 @@ to-transparent
 <h3
 
 className="
+
 mt-8
+
 text-4xl
+
 font-extrabold
+
 text-white
+
 "
 
 >
@@ -322,14 +396,21 @@ text-white
 
 
 
+
 <p
 
 className="
+
 mt-5
+
 max-w-3xl
+
 text-lg
+
 leading-8
-text-slate-300
+
+text-[#E5E5E5]
+
 "
 
 >
@@ -345,7 +426,9 @@ text-slate-300
 
 
 
+
 {/* BUTTON */}
+
 
 
 <button
@@ -356,22 +439,42 @@ e.stopPropagation();
 
 }}
 
+
 className="
+
 mt-10
+
+
 rounded-xl
-border
-border-white/30
-bg-gradient-to-r
-from-blue-500/80
-to-cyan-400/70
+
+
+bg-[#FCA311]
+
+
 px-8
+
+
 py-4
+
+
 font-semibold
-text-white
-shadow-[0_15px_40px_rgba(6,182,212,0.35)]
-backdrop-blur-xl
-transition
+
+
+text-black
+
+
+
+shadow-[0_15px_40px_rgba(252,163,17,0.35)]
+
+
+transition-all
+
+
 hover:scale-105
+
+
+hover:bg-[#ffb733]
+
 "
 
 >
@@ -384,7 +487,10 @@ View Project →
 
 
 
+
 </div>
+
+
 
 
 
@@ -407,6 +513,8 @@ View Project →
 
 
 
+
+
 return(
 
 
@@ -415,14 +523,76 @@ return(
 id="projects"
 
 className="
+
 relative
+
 overflow-hidden
-bg-[#050B1C]
+
+
+bg-gradient-to-b
+
+from-black
+
+via-[#14213D]
+
+to-black
+
+
 py-32
+
 text-white
+
 "
 
 >
+
+
+
+
+
+
+
+
+{/* GOLD GLOW */}
+
+
+
+<div
+
+className="
+
+absolute
+
+top-0
+
+left-1/2
+
+
+-translate-x-1/2
+
+
+h-[300px]
+
+
+w-[700px]
+
+
+rounded-full
+
+
+bg-[#FCA311]/10
+
+
+blur-[150px]
+
+"
+
+/>
+
+
+
+
+
 
 
 <div className="container-x">
@@ -432,20 +602,32 @@ text-white
 
 
 
+
+
 {/* HEADER */}
+
 
 
 <div className="text-center">
 
 
+
 <p
 
 className="
+
 text-sm
+
 uppercase
+
 tracking-[0.35em]
+
+
 font-bold
-text-blue-400
+
+
+text-[#FCA311]
+
 "
 
 >
@@ -458,12 +640,19 @@ Portfolio
 
 
 
+
+
+
 <h2
 
 className="
+
 mt-5
+
 text-5xl
+
 font-extrabold
+
 "
 
 >
@@ -476,12 +665,20 @@ Our Projects
 
 
 
+
+
+
+
 <p
 
 className="
+
 mt-5
+
 text-lg
-text-slate-300
+
+text-[#E5E5E5]
+
 "
 
 >
@@ -490,6 +687,8 @@ Innovative software products developed for industrial automation,
 engineering and business applications.
 
 </p>
+
+
 
 
 
@@ -506,15 +705,25 @@ engineering and business applications.
 {/* STACK */}
 
 
+
 <div
 
 className="
+
 mt-20
+
 relative
+
 mx-auto
+
+
 h-[430px]
+
+
 max-w-[1100px]
+
 "
+
 
 style={{
 
@@ -523,6 +732,9 @@ perspective:"1200px"
 }}
 
 >
+
+
+
 
 
 
@@ -537,6 +749,8 @@ index={getIndex(2)}
 position={2}
 
 />
+
+
 
 
 
@@ -566,6 +780,8 @@ activeCard
 
 
 
+
+
 </AnimatePresence>
 
 
@@ -578,13 +794,20 @@ activeCard
 
 
 
+
+
 <p
 
 className="
+
 mt-10
+
 text-center
+
 text-sm
-text-slate-400
+
+text-[#E5E5E5]
+
 "
 
 >
@@ -592,6 +815,7 @@ text-slate-400
 Click the card to explore next project
 
 </p>
+
 
 
 

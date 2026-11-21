@@ -114,31 +114,68 @@ return(
 id="contact"
 
 className="
+
 relative
+
 overflow-hidden
-bg-[#050B1C]
+
+
+bg-gradient-to-b
+
+
+from-black
+
+
+via-[#14213D]
+
+
+to-black
+
+
 py-28
+
+
 text-white
+
 "
 
 >
 
 
-{/* Background Glow */}
+
+
+
+{/* GOLD GLOW */}
 
 
 <div
 
 className="
+
 absolute
+
 left-1/2
+
 top-0
+
+
 h-[450px]
+
+
 w-[450px]
+
+
 -translate-x-1/2
+
+
 rounded-full
-bg-blue-600/20
+
+
+bg-[#FCA311]/15
+
+
 blur-[140px]
+
 "
 
 />
@@ -157,7 +194,6 @@ blur-[140px]
 
 
 
-
 {/* Heading */}
 
 
@@ -165,8 +201,11 @@ blur-[140px]
 <div
 
 className="
+
 mb-16
+
 text-center
+
 "
 
 >
@@ -175,10 +214,17 @@ text-center
 <p
 
 className="
+
 font-semibold
+
 uppercase
+
+
 tracking-[0.35em]
-text-cyan-400
+
+
+text-[#FCA311]
+
 "
 
 >
@@ -191,12 +237,19 @@ Contact Us
 
 
 
+
+
+
 <h2
 
 className="
+
 mt-5
+
 text-5xl
+
 font-extrabold
+
 "
 
 >
@@ -210,12 +263,18 @@ Let's Build Something Great
 
 
 
+
+
 <p
 
 className="
+
 mt-5
+
 text-lg
-text-slate-300
+
+text-[#E5E5E5]
+
 "
 
 >
@@ -240,9 +299,14 @@ powerful digital solutions together.
 <div
 
 className="
+
 grid
+
 gap-14
+
+
 lg:grid-cols-2
+
 "
 
 >
@@ -262,20 +326,29 @@ lg:grid-cols-2
 <div
 
 className="
+
 flex
+
 flex-col
+
 justify-center
+
 "
 
 >
 
 
 
+
+
 <h3
 
 className="
+
 text-4xl
+
 font-extrabold
+
 "
 
 >
@@ -288,13 +361,21 @@ Get In Touch
 
 
 
+
+
 <p
 
 className="
+
 mt-5
+
 max-w-lg
+
 leading-8
-text-slate-300
+
+
+text-[#E5E5E5]
+
 "
 
 >
@@ -316,8 +397,11 @@ to help you.
 <div
 
 className="
+
 mt-10
+
 space-y-8
+
 "
 
 >
@@ -334,11 +418,20 @@ space-y-8
 <p
 
 className="
+
 text-sm
+
 font-semibold
+
+
 uppercase
+
+
 tracking-wider
-text-cyan-400
+
+
+text-[#FCA311]
+
 "
 
 >
@@ -348,12 +441,17 @@ Email
 </p>
 
 
+
 <p
 
 className="
+
 mt-2
+
 text-xl
+
 font-medium
+
 "
 
 >
@@ -378,11 +476,20 @@ enquiry@indigentech.com
 <p
 
 className="
+
 text-sm
+
 font-semibold
+
+
 uppercase
+
+
 tracking-wider
-text-cyan-400
+
+
+text-[#FCA311]
+
 "
 
 >
@@ -392,12 +499,17 @@ Phone
 </p>
 
 
+
 <p
 
 className="
+
 mt-2
+
 text-xl
+
 font-medium
+
 "
 
 >
@@ -422,11 +534,20 @@ font-medium
 <p
 
 className="
+
 text-sm
+
 font-semibold
+
+
 uppercase
+
+
 tracking-wider
-text-cyan-400
+
+
+text-[#FCA311]
+
 "
 
 >
@@ -436,17 +557,22 @@ Location
 </p>
 
 
+
 <p
 
 className="
+
 mt-2
+
 text-xl
+
 font-medium
+
 "
 
 >
 
-Baner, Maharastra, India
+Baner, Maharashtra, India
 
 </p>
 
@@ -489,17 +615,32 @@ Baner, Maharastra, India
 onSubmit={submitForm}
 
 className="
+
+
 rounded-3xl
+
+
+
 border
+
 border-white/20
 
-bg-white/[0.08]
+
+
+bg-white/[0.06]
+
+
 
 backdrop-blur-2xl
 
+
+
 p-10
 
-shadow-[0_25px_80px_rgba(0,0,0,0.35)]
+
+
+shadow-[0_25px_80px_rgba(0,0,0,0.45)]
+
 
 "
 
@@ -513,9 +654,14 @@ shadow-[0_25px_80px_rgba(0,0,0,0.35)]
 <div
 
 className="
+
 grid
+
 gap-5
+
+
 md:grid-cols-2
+
 "
 
 >
@@ -534,20 +680,46 @@ value={form.name}
 
 onChange={handleChange}
 
+
 className="
+
 rounded-xl
+
+
 border
+
 border-white/20
+
+
+
 bg-white/10
+
+
+
 px-5
+
 py-4
+
+
+
 text-white
+
+
+
 outline-none
+
+
+
 placeholder:text-slate-400
-focus:border-cyan-400
+
+
+
+focus:border-[#FCA311]
+
 "
 
 />
+
 
 
 
@@ -565,24 +737,52 @@ value={form.company}
 
 onChange={handleChange}
 
+
 className="
+
 rounded-xl
+
+
 border
+
 border-white/20
+
+
+
 bg-white/10
+
+
+
 px-5
+
 py-4
+
+
+
 text-white
+
+
+
 outline-none
+
+
+
 placeholder:text-slate-400
-focus:border-cyan-400
+
+
+
+focus:border-[#FCA311]
+
 "
 
 />
 
 
 
+
+
 </div>
+
 
 
 
@@ -601,22 +801,51 @@ value={form.email}
 
 onChange={handleChange}
 
+
 className="
+
 mt-5
+
 w-full
+
+
 rounded-xl
+
+
 border
+
 border-white/20
+
+
+
 bg-white/10
+
+
+
 px-5
+
 py-4
+
+
+
 text-white
+
+
+
 outline-none
+
+
+
 placeholder:text-slate-400
-focus:border-cyan-400
+
+
+
+focus:border-[#FCA311]
+
 "
 
 />
+
 
 
 
@@ -635,22 +864,51 @@ value={form.phone}
 
 onChange={handleChange}
 
+
 className="
+
 mt-5
+
 w-full
+
+
 rounded-xl
+
+
 border
+
 border-white/20
+
+
+
 bg-white/10
+
+
+
 px-5
+
 py-4
+
+
+
 text-white
+
+
+
 outline-none
+
+
+
 placeholder:text-slate-400
-focus:border-cyan-400
+
+
+
+focus:border-[#FCA311]
+
 "
 
 />
+
 
 
 
@@ -671,19 +929,47 @@ value={form.message}
 
 onChange={handleChange}
 
+
 className="
+
 mt-5
+
 w-full
+
+
 rounded-xl
+
+
 border
+
 border-white/20
+
+
+
 bg-white/10
+
+
+
 px-5
+
 py-4
+
+
+
 text-white
+
+
+
 outline-none
+
+
+
 placeholder:text-slate-400
-focus:border-cyan-400
+
+
+
+focus:border-[#FCA311]
+
 "
 
 />
@@ -700,28 +986,46 @@ focus:border-cyan-400
 
 disabled={loading}
 
+
 className="
+
 mt-6
+
 w-full
+
+
+
 rounded-xl
 
-bg-gradient-to-r
 
-from-blue-500
 
-to-cyan-400
+bg-[#FCA311]
+
 
 
 py-4
 
+
+
 font-bold
 
-text-white
+
+
+text-black
+
 
 
 transition
 
+
+
 hover:scale-[1.02]
+
+
+
+hover:bg-[#ffb733]
+
+
 
 disabled:opacity-50
 
@@ -732,9 +1036,13 @@ disabled:opacity-50
 {
 
 loading
+
 ?
+
 "Sending..."
+
 :
+
 "Send Message →"
 
 }
