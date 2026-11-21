@@ -5,10 +5,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { PROJECTS } from "@/lib/data";
 
 
+
 export default function Projects(){
 
 
 const [active,setActive]=useState(0);
+
 
 
 
@@ -45,6 +47,7 @@ index -= PROJECTS.length;
 return index;
 
 };
+
 
 
 
@@ -113,8 +116,11 @@ activeCard
 {
 
 y:-600,
+
 opacity:0,
+
 scale:0.92,
+
 rotateX:-15
 
 }
@@ -163,12 +169,12 @@ rounded-bl-none
 
 border
 
-border-white/20
+border-black/30
 
 
 
 
-bg-white/[0.06]
+bg-[#111827]
 
 
 backdrop-blur-2xl
@@ -180,7 +186,7 @@ p-12
 
 
 
-shadow-[0_30px_90px_rgba(0,0,0,0.55)]
+shadow-[0_30px_90px_rgba(0,0,0,0.45)]
 
 
 
@@ -214,7 +220,7 @@ activeCard
 
 
 
-{/* GOLD GLASS SHINE */}
+{/* GLASS SHINE */}
 
 
 
@@ -229,7 +235,7 @@ inset-0
 
 bg-gradient-to-br
 
-from-white/20
+from-white/10
 
 via-transparent
 
@@ -409,7 +415,7 @@ text-lg
 
 leading-8
 
-text-[#E5E5E5]
+text-gray-300
 
 "
 
@@ -515,6 +521,8 @@ View Project →
 
 
 
+
+
 return(
 
 
@@ -529,65 +537,17 @@ relative
 overflow-hidden
 
 
-bg-gradient-to-b
-
-from-black
-
-via-[#14213D]
-
-to-black
+bg-[#FCA311]
 
 
 py-32
 
-text-white
+text-black
 
 "
 
 >
 
-
-
-
-
-
-
-
-{/* GOLD GLOW */}
-
-
-
-<div
-
-className="
-
-absolute
-
-top-0
-
-left-1/2
-
-
--translate-x-1/2
-
-
-h-[300px]
-
-
-w-[700px]
-
-
-rounded-full
-
-
-bg-[#FCA311]/10
-
-
-blur-[150px]
-
-"
-
-/>
 
 
 
@@ -626,7 +586,7 @@ tracking-[0.35em]
 font-bold
 
 
-text-[#FCA311]
+text-black
 
 "
 
@@ -653,6 +613,8 @@ text-5xl
 
 font-extrabold
 
+text-black
+
 "
 
 >
@@ -677,7 +639,7 @@ mt-5
 
 text-lg
 
-text-[#E5E5E5]
+text-[#3A3A3A]
 
 "
 
@@ -806,7 +768,7 @@ text-center
 
 text-sm
 
-text-[#E5E5E5]
+text-black/70
 
 "
 

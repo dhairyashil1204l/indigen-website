@@ -16,50 +16,12 @@ id="blogs"
 className="
 relative
 overflow-hidden
-
-bg-gradient-to-b
-
-from-black
-
-via-[#14213D]
-
-to-black
-
+bg-white
 py-28
-
-text-white
+text-black
 "
 
 >
-
-
-
-{/* GOLD GLOW */}
-
-
-<div
-
-className="
-absolute
-top-0
-left-1/2
--translate-x-1/2
-
-h-[300px]
-
-w-[700px]
-
-rounded-full
-
-bg-[#FCA311]/10
-
-blur-[150px]
-
-"
-
-/>
-
-
 
 
 
@@ -73,7 +35,7 @@ blur-[150px]
 
 
 
-{/* Heading */}
+{/* HEADING */}
 
 
 
@@ -85,13 +47,9 @@ blur-[150px]
 
 className="
 text-[#FCA311]
-
 font-semibold
-
 uppercase
-
 tracking-widest
-
 "
 
 >
@@ -110,11 +68,9 @@ Insights
 
 className="
 mt-4
-
 text-5xl
-
 font-extrabold
-
+text-[#111111]
 "
 
 >
@@ -134,9 +90,7 @@ Latest Blogs
 
 className="
 mt-4
-
-text-[#E5E5E5]
-
+text-gray-600
 "
 
 >
@@ -161,11 +115,8 @@ Explore our latest technology insights and industry updates.
 
 className="
 grid
-
 gap-6
-
 lg:grid-cols-3
-
 "
 
 >
@@ -331,15 +282,11 @@ rounded-3xl
 
 border
 
-border-white/20
+border-gray-300
 
 
 
-bg-white/[0.06]
-
-
-
-backdrop-blur-2xl
+bg-[#171717]
 
 
 
@@ -353,11 +300,15 @@ duration-500
 
 
 
-hover:border-[#FCA311]/50
+hover:-translate-y-2
 
 
 
-hover:shadow-[0_20px_50px_rgba(252,163,17,0.18)]
+hover:border-[#FCA311]
+
+
+
+hover:shadow-[0_20px_50px_rgba(252,163,17,0.25)]
 
 
 
@@ -457,7 +408,7 @@ to-transparent
 
 
 
-{/* GOLD LIGHT */}
+{/* GOLD HOVER EFFECT */}
 
 
 
@@ -479,7 +430,7 @@ from-transparent
 via-transparent
 
 
-to-[#FCA311]/20
+to-[#FCA311]/30
 
 
 opacity-0
@@ -586,7 +537,7 @@ mt-3
 
 text-sm
 
-text-[#E5E5E5]
+text-gray-300
 
 "
 

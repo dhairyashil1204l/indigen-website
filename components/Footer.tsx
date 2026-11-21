@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUp } from "lucide-react";
+import Image from "next/image";
+import { ArrowUp, Linkedin, Instagram, Twitter } from "lucide-react";
 
 
 export default function Footer(){
-
 
 
 const scrollTop=()=>{
@@ -29,8 +29,8 @@ return(
 <footer
 
 className="
-bg-black
-text-white
+bg-white
+text-black
 pt-16
 "
 
@@ -44,9 +44,12 @@ className="
 container-x
 overflow-hidden
 rounded-t-[50px]
+
 border
-border-white/10
-bg-[#14213D]
+border-gray-200
+
+bg-[#FCA311]
+
 "
 
 >
@@ -87,35 +90,23 @@ lg:grid-cols-4
 <div>
 
 
-<h3
+<Image
+
+src="/images/Finllogo.png"
+
+alt="Indigen Technologies Logo"
+
+width={230}
+
+height={90}
 
 className="
-text-3xl
-font-extrabold
-tracking-wide
+object-contain
 "
 
->
+priority
 
-INDIGEN
-
-</h3>
-
-
-<p
-
-className="
-mt-1
-text-sm
-tracking-[0.4em]
-text-[#FCA311]
-"
-
->
-
-TECHNOLOGIES
-
-</p>
+/>
 
 
 
@@ -127,7 +118,7 @@ TECHNOLOGIES
 className="
 mt-6
 leading-8
-text-[#E5E5E5]
+text-gray-800
 "
 
 >
@@ -177,7 +168,7 @@ Services
 className="
 mt-6
 space-y-4
-text-[#E5E5E5]
+text-gray-800
 "
 
 >
@@ -233,10 +224,6 @@ Digital Transformation
 
 
 
-
-
-
-
 {/* INDUSTRIES */}
 
 
@@ -264,44 +251,34 @@ Industries
 className="
 mt-6
 space-y-4
-text-[#E5E5E5]
+text-gray-800
 "
 
 >
 
 
 <li>
-
 Manufacturing
-
 </li>
 
 
 <li>
-
 Automation
-
 </li>
 
 
 <li>
-
 Healthcare
-
 </li>
 
 
 <li>
-
 Engineering
-
 </li>
 
 
 <li>
-
 Enterprise
-
 </li>
 
 
@@ -309,10 +286,6 @@ Enterprise
 
 
 </div>
-
-
-
-
 
 
 
@@ -350,7 +323,7 @@ Quick Links
 className="
 mt-6
 space-y-4
-text-[#E5E5E5]
+text-gray-800
 "
 
 >
@@ -358,11 +331,11 @@ text-[#E5E5E5]
 
 <li>
 
-<Link 
+<Link
 
 href="#about"
 
-className="hover:text-[#FCA311] transition"
+className="hover:text-white transition"
 
 >
 
@@ -377,11 +350,11 @@ About Us
 
 <li>
 
-<Link 
+<Link
 
 href="#services"
 
-className="hover:text-[#FCA311] transition"
+className="hover:text-white transition"
 
 >
 
@@ -397,11 +370,11 @@ Services
 
 <li>
 
-<Link 
+<Link
 
 href="#projects"
 
-className="hover:text-[#FCA311] transition"
+className="hover:text-white transition"
 
 >
 
@@ -417,11 +390,11 @@ Projects
 
 <li>
 
-<Link 
+<Link
 
 href="#blogs"
 
-className="hover:text-[#FCA311] transition"
+className="hover:text-white transition"
 
 >
 
@@ -437,11 +410,11 @@ Blogs
 
 <li>
 
-<Link 
+<Link
 
 href="#contact"
 
-className="hover:text-[#FCA311] transition"
+className="hover:text-white transition"
 
 >
 
@@ -475,168 +448,231 @@ Contact Us
 
 
 
-{/* MAP */}
+{/* BOTTOM BAR */}
 
 
 
 <div
 
 className="
+
 mx-10
-mb-10
-overflow-hidden
-rounded-3xl
-border
-border-white/10
-"
 
->
-
-
-<iframe
-
-
-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2580295033003!2d73.7837066!3d18.5624023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2becde2274201%3A0xe4a108f6a3e26367!2sIndigen%20Technologies!5e0!3m2!1sen!2sin!4v1793012472920!5m2!1sen!2sin"
-
-
-width="100%"
-
-height="300"
-
-loading="lazy"
-
-className="
-border-0
-"
-
-/>
-
-</div>
-
-
-
-
-
-
-
-
-
-{/* SOCIAL BAR */}
-
-
-
-<div
-
-className="
-mx-10
 mb-8
+
 rounded-2xl
+
 border
-border-white/10
-bg-white/[0.04]
+
+border-black/10
+
+bg-black/10
+
 px-8
+
 py-6
 
-flex
-
-flex-wrap
-
-justify-between
-
-gap-5
-
-text-[#E5E5E5]
-
-"
-
->
-
-
-<span className="hover:text-[#FCA311] cursor-pointer transition">
-
-LinkedIn
-
-</span>
-
-
-<span className="hover:text-[#FCA311] cursor-pointer transition">
-
-Instagram
-
-</span>
-
-
-<span className="hover:text-[#FCA311] cursor-pointer transition">
-
-X Twitter
-
-</span>
-
-
-<span className="hover:text-[#FCA311] cursor-pointer transition">
-
-Facebook
-
-</span>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-{/* COPYRIGHT */}
-
-
-
-<div
-
-className="
-border-t
-border-white/10
-px-10
-py-6
 
 flex
 
 flex-col
 
-gap-4
+gap-6
+
 
 md:flex-row
 
-justify-between
+md:items-center
 
-text-sm
-
-text-[#E5E5E5]
+md:justify-between
 
 "
 
 >
 
 
-<p>
 
-© 2026 Indigen Technologies. All Rights Reserved.
+
+
+
+{/* EMAIL LEFT */}
+
+
+
+<div>
+
+
+<p
+
+className="
+
+text-sm
+
+font-semibold
+
+text-gray-700
+
+"
+
+>
+
+Email
 
 </p>
 
 
 
+<a
+
+href="mailto:enquiry@indigentech.com"
+
+className="
+
+text-lg
+
+font-bold
+
+hover:text-white
+
+transition
+
+"
+
+>
+
+enquiry@indigentech.com
+
+</a>
 
 
-<p>
+</div>
 
-Privacy Policy | Terms & Conditions
 
-</p>
+
+
+
+
+
+
+
+{/* COPYRIGHT CENTER */}
+
+
+
+<div
+
+className="
+
+text-sm
+
+text-gray-800
+
+text-center
+
+"
+
+>
+
+© 2026 Indigen Technologies.
+All Rights Reserved.
+
+</div>
+
+
+
+
+
+
+
+
+
+{/* SOCIAL RIGHT */}
+
+
+
+<div
+
+className="
+
+flex
+
+items-center
+
+gap-5
+
+"
+
+>
+
+
+<a
+
+href="#"
+
+className="
+
+transition
+
+hover:text-white
+
+"
+
+>
+
+<Linkedin size={24}/>
+
+</a>
+
+
+
+
+
+<a
+
+href="#"
+
+className="
+
+transition
+
+hover:text-white
+
+"
+
+>
+
+<Twitter size={24}/>
+
+</a>
+
+
+
+
+
+<a
+
+href="#"
+
+className="
+
+transition
+
+hover:text-white
+
+"
+
+>
+
+<Instagram size={24}/>
+
+</a>
+
+
+
+</div>
+
+
+
 
 
 

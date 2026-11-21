@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send } from "lucide-react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 
@@ -72,6 +73,7 @@ behavior:"smooth"
 });
 
 },[messages,loading]);
+
 
 
 
@@ -229,7 +231,7 @@ return(
 
 
 
-{/* CHAT BUTTON */}
+{/* FLOAT BUTTON */}
 
 
 
@@ -272,62 +274,40 @@ rounded-full
 
 
 
-overflow-hidden
-
-
-
-border
-
-border-white/30
-
-
-
-bg-gradient-to-br
-
-from-blue-500
-
-via-blue-700
-
-to-[#14213D]
-
-
-
-shadow-[0_15px_45px_rgba(37,99,235,0.45)]
-
-
-
 flex
 
 items-center
 
 justify-center
 
-text-white
+
+
+overflow-hidden
+
+
+
+border
+
+border-white/40
+
+
+
+bg-[#FCA311]
+
+
+
+text-black
+
+
+
+shadow-[0_15px_45px_rgba(252,163,17,0.45)]
 
 "
 
 >
 
 
-<div
-
-className="
-
-absolute
-
-inset-0
-
-bg-gradient-to-br
-
-from-white/40
-
-via-transparent
-
-to-transparent
-
-"
-
-/>
+<div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-transparent"/>
 
 
 <div className="relative">
@@ -449,19 +429,15 @@ overflow-hidden
 
 border
 
-border-blue-400/30
+border-gray-200
 
 
 
-bg-[#071426]/95
+bg-white
 
 
 
-backdrop-blur-2xl
-
-
-
-shadow-[0_30px_100px_rgba(37,99,235,0.35)]
+shadow-[0_30px_100px_rgba(0,0,0,0.25)]
 
 
 
@@ -472,63 +448,6 @@ flex-col
 "
 
 >
-
-
-{/* ROBOT BACKGROUND */}
-
-
-
-<div
-
-className="
-
-absolute
-
-inset-0
-
-bg-cover
-
-bg-center
-
-opacity-[0.18]
-
-"
-
-style={{
-
-backgroundImage:
-
-"url('/images/robotbg.jpg')"
-
-}}
-
-/>
-
-
-
-
-
-
-
-<div
-
-className="
-
-absolute
-
-inset-0
-
-bg-gradient-to-b
-
-from-[#071426]/40
-
-via-[#071426]/80
-
-to-[#071426]
-
-"
-
-/>
 
 
 
@@ -548,26 +467,13 @@ className="
 
 relative
 
-z-10
-
 px-6
 
 py-5
 
+bg-[#FCA311]
 
-bg-gradient-to-r
-
-from-blue-600
-
-via-blue-500
-
-to-cyan-500
-
-
-text-white
-
-
-overflow-hidden
+text-black
 
 "
 
@@ -575,31 +481,7 @@ overflow-hidden
 
 
 
-<div
-
-className="
-
-absolute
-
-inset-0
-
-bg-gradient-to-br
-
-from-white/40
-
-via-transparent
-
-to-transparent
-
-"
-
-/>
-
-
-
-
-
-<div className="relative flex items-center gap-3">
+<div className="flex items-center gap-3">
 
 
 
@@ -613,14 +495,11 @@ w-12
 
 rounded-full
 
-
-bg-white/20
-
+bg-white
 
 border
 
-border-white/40
-
+border-black/10
 
 flex
 
@@ -628,16 +507,30 @@ items-center
 
 justify-center
 
-
-backdrop-blur-xl
+overflow-hidden
 
 "
 
 >
 
-🤖
+
+<Image
+
+src="/images/Finllogo.png"
+
+alt="logo"
+
+width={45}
+
+height={45}
+
+className="object-contain"
+
+/>
+
 
 </div>
+
 
 
 
@@ -645,14 +538,14 @@ backdrop-blur-xl
 <div>
 
 
-<h3 className="font-bold text-lg">
+<h3 className="font-extrabold text-lg">
 
 Indigen AI Assistant
 
 </h3>
 
 
-<p className="text-xs text-blue-100">
+<p className="text-xs text-black/70">
 
 ● Online
 
@@ -676,17 +569,13 @@ Indigen AI Assistant
 
 
 
-{/* CHAT AREA */}
+{/* MESSAGES */}
 
 
 
 <div
 
 className="
-
-relative
-
-z-10
 
 flex-1
 
@@ -695,6 +584,8 @@ overflow-y-auto
 p-5
 
 space-y-4
+
+bg-gray-50
 
 "
 
@@ -712,10 +603,15 @@ key={index}
 
 className={`flex ${
 msg.role==="user"
+
 ?
+
 "justify-end"
+
 :
+
 "justify-start"
+
 }`}
 
 >
@@ -740,7 +636,7 @@ leading-6
 
 whitespace-pre-wrap
 
-border
+shadow-sm
 
 
 
@@ -749,12 +645,11 @@ msg.role==="user"
 
 ?
 
-"bg-blue-600 text-white border-blue-300/30 rounded-br-sm"
-
+"bg-[#FCA311] text-black rounded-br-sm"
 
 :
 
-"bg-white/10 text-white border-white/20 backdrop-blur-xl rounded-bl-sm"
+"bg-white text-gray-800 border border-gray-200 rounded-bl-sm"
 
 }
 
@@ -793,11 +688,7 @@ w-fit
 
 rounded-xl
 
-bg-blue-500/20
-
-border
-
-border-blue-300/30
+bg-[#FCA311]/20
 
 px-4
 
@@ -805,7 +696,7 @@ py-3
 
 text-sm
 
-text-blue-100
+text-gray-700
 
 "
 
@@ -842,13 +733,9 @@ Thinking...
 
 className="
 
-relative
-
-z-10
-
 border-t
 
-border-white/10
+border-gray-200
 
 p-4
 
@@ -856,7 +743,7 @@ flex
 
 gap-3
 
-bg-black/20
+bg-white
 
 "
 
@@ -900,23 +787,21 @@ resize-none
 
 rounded-xl
 
-bg-white/10
+bg-gray-100
 
 border
 
-border-white/20
+border-gray-300
 
 px-4
 
 py-3
 
-text-white
+text-black
 
 outline-none
 
-placeholder:text-slate-400
-
-focus:border-blue-400
+focus:border-[#FCA311]
 
 "
 
@@ -946,11 +831,7 @@ rounded-xl
 
 
 
-bg-gradient-to-br
-
-from-blue-500
-
-to-cyan-400
+bg-[#FCA311]
 
 
 
@@ -962,11 +843,15 @@ justify-center
 
 
 
-text-white
+text-black
 
 
 
 shadow-lg
+
+hover:scale-105
+
+transition
 
 "
 

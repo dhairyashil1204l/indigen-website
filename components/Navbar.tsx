@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 
 const navLinks = [
@@ -115,53 +116,30 @@ shadow-[0_10px_30px_rgba(0,0,0,0.08)]
 
 
 
-<Link href="#home">
 
 
-<div>
+<div className="flex items-center">
 
+<Image
 
-<h1
+src="/images/Finllogo.png"
 
-className="
-text-2xl
-font-extrabold
-tracking-wider
-text-[#14213D]
-"
+alt="Indigen Technologies Logo"
 
->
+width={100}
 
-INDIGEN
-
-</h1>
-
-
-
-<p
+height={90}
 
 className="
-text-[10px]
-font-semibold
-tracking-[0.45em]
-text-[#FCA311]
+object-contain
+rounded-lg
 "
 
->
+priority
 
-TECHNOLOGIES
-
-</p>
-
-
+/>
 
 </div>
-
-
-</Link>
-
-
-
 
 
 
